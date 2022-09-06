@@ -1,0 +1,180 @@
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\DPM Utility.exe.config
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\DPM Utility.exe
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\DPM Utility.pdb
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\MainWindow.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\App.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.cache
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.lref
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\MainWindow.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.g.resources
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM_Utility.Properties.Resources.resources
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.exe
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.pdb
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageA.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageA.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\App.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\Styles\IconButtonStyle.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\Styles\RadioIconButton.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\Styles\CheckRadioButton.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageB.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageB.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\MotionDetection.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\MotionDetection.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\Styles\ScrollviewStyle.baml
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.dll
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.pdb
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.xml
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
+C:\Users\46432\source\repos\DPM Utility\bin\Debug\ACS.SPiiPlusNET.dll
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageD.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\PageD.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\NotificationWindow.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\NotificationWindow.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\Styles\TextBox.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DpmParameter.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DpmParameter.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\UserControls\Buffer.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\UserControls\Buffer.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\UserControls\HelpPng.g.cs
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\UserControls\HelpPng.baml
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+C:\Users\46432\source\repos\DPM Utility\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\DPM Utility.exe.config
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\DPM Utility.exe
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\DPM Utility.pdb
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\ACS.SPiiPlusNET.dll
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.dll
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.pdb
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.xml
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\46432\Desktop\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\Styles\CheckRadioButton.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\Styles\RadioIconButton.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\Styles\ScrollviewStyle.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\Styles\TextBox.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DpmParameter.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\MainWindow.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\MotionDetection.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\NotificationWindow.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageA.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageB.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageD.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\UserControls\Buffer.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\App.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.cache
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.lref
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\App.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DpmParameter.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\MainWindow.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\MotionDetection.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\NotificationWindow.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageA.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageB.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\PageD.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\Styles\IconButtonStyle.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\UserControls\Buffer.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.baml
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.g.resources
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM_Utility.Properties.Resources.resources
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.exe
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.pdb
+C:\Users\46432\Desktop\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.exe.config
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.exe
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.pdb
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.dll
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.dll
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.pdb
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.xml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.pdb
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.xml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\CheckRadioButton.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\RadioIconButton.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\ScrollviewStyle.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\TextBox.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DpmParameter.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MainWindow.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MotionDetection.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\NotificationWindow.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageA.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageB.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageD.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\Buffer.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\App.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.lref
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\App.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DpmParameter.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MainWindow.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MotionDetection.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\NotificationWindow.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageA.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageB.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\PageD.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\IconButtonStyle.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\Buffer.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.baml
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.g.resources
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM_Utility.Properties.Resources.resources
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.exe
+D:\BaiduNetdiskWorkspace\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.pdb
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.exe.config
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.exe
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\DPM Utility.pdb
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.dll
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.dll
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.pdb
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.xml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.pdb
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\bin\Debug\LiveCharts.Wpf.xml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\CheckRadioButton.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\RadioIconButton.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\ScrollviewStyle.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\TextBox.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DpmParameter.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MainWindow.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MotionDetection.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\NotificationWindow.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\Buffer.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\App.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.cache
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.lref
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\App.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DpmParameter.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MainWindow.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\MotionDetection.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\NotificationWindow.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\Styles\IconButtonStyle.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\Buffer.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\UserControls\HelpPng.baml
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.g.resources
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM_Utility.Properties.Resources.resources
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.exe
+D:\BaiduSyncdisk\程序\C#SQLite\DPM\DPM Utility\obj\Debug\DPM Utility.pdb
