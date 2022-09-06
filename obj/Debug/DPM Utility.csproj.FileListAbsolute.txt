@@ -1,0 +1,42 @@
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\CheckRadioButton.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\ListBoxStyle.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\RadioIconButton.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\ScrollviewStyle.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\TextBox.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\UserControls\Buffer.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\UserControls\HelpPng.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\DpmParameter.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\MainWindow.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\MotionDetection.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\NotificationWindow.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\App.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.cache
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility_MarkupCompile.lref
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\DPM Utility.exe.config
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\DPM Utility.exe
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\DPM Utility.pdb
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\ACS.SPiiPlusNET.dll
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.dll
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.pdb
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.xml
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\46432\Desktop\DPM Utility\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\App.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Styles\IconButtonStyle.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\UserControls\Buffer.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\UserControls\HelpPng.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\DpmParameter.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\MainWindow.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\MotionDetection.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\Views\NotificationWindow.baml
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.g.resources
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM_Utility.Properties.Resources.resources
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.exe
+C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.pdb
