@@ -47,7 +47,7 @@
                         <Controls:IconButton ToolTip="关闭" x:Name="closeFormButton" Click="closeFormButton_Click" Width="25" Height="25" Margin="5 0" IconOnlyData="&#xe644;" Style="{StaticResource IconOnlyButtonStyle}"/>
                     </StackPanel>
                     <!--<WrapPanel VerticalAlignment="Center" Grid.Row="1"  x:Name="dynamicWrapPanel"/>-->
-                    <Frame Name="frmMain" NavigationUIVisibility="Hidden" Grid.Row="2" />
+                    <Frame Name="frmMain" NavigationUIVisibility="Hidden" Grid.Row="2" Content="{Binding MainContent}"/>
                 </Grid>
             </Border>
         </Grid>

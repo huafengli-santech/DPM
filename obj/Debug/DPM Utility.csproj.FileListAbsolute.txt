@@ -40,3 +40,46 @@ C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.CoreCompileInput
 C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.csproj.CopyComplete
 C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.exe
 C:\Users\46432\Desktop\DPM Utility\obj\Debug\DPM Utility.pdb
+D:\GitCode\DPM\bin\Debug\DPM Utility.exe.config
+D:\GitCode\DPM\bin\Debug\DPM Utility.exe
+D:\GitCode\DPM\bin\Debug\DPM Utility.pdb
+D:\GitCode\DPM\bin\Debug\LiveCharts.dll
+D:\GitCode\DPM\bin\Debug\LiveCharts.Wpf.dll
+D:\GitCode\DPM\bin\Debug\LiveCharts.pdb
+D:\GitCode\DPM\bin\Debug\LiveCharts.xml
+D:\GitCode\DPM\bin\Debug\LiveCharts.Wpf.pdb
+D:\GitCode\DPM\bin\Debug\LiveCharts.Wpf.xml
+D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.AssemblyReference.cache
+D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.SuggestedBindingRedirects.cache
+D:\GitCode\DPM\obj\Debug\Styles\CheckRadioButton.baml
+D:\GitCode\DPM\obj\Debug\Styles\ListBoxStyle.baml
+D:\GitCode\DPM\obj\Debug\Styles\RadioIconButton.baml
+D:\GitCode\DPM\obj\Debug\Styles\ScrollviewStyle.baml
+D:\GitCode\DPM\obj\Debug\Styles\TextBox.baml
+D:\GitCode\DPM\obj\Debug\UserControls\Buffer.g.cs
+D:\GitCode\DPM\obj\Debug\UserControls\HelpPng.g.cs
+D:\GitCode\DPM\obj\Debug\Views\DpmParameter.g.cs
+D:\GitCode\DPM\obj\Debug\Views\MainWindow.g.cs
+D:\GitCode\DPM\obj\Debug\Views\MotionDetection.g.cs
+D:\GitCode\DPM\obj\Debug\Views\NotificationWindow.g.cs
+D:\GitCode\DPM\obj\Debug\App.g.cs
+D:\GitCode\DPM\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\GitCode\DPM\obj\Debug\DPM Utility_MarkupCompile.cache
+D:\GitCode\DPM\obj\Debug\DPM Utility_MarkupCompile.lref
+D:\GitCode\DPM\obj\Debug\App.baml
+D:\GitCode\DPM\obj\Debug\Styles\IconButtonStyle.baml
+D:\GitCode\DPM\obj\Debug\UserControls\Buffer.baml
+D:\GitCode\DPM\obj\Debug\UserControls\HelpPng.baml
+D:\GitCode\DPM\obj\Debug\Views\DpmParameter.baml
+D:\GitCode\DPM\obj\Debug\Views\MainWindow.baml
+D:\GitCode\DPM\obj\Debug\Views\MotionDetection.baml
+D:\GitCode\DPM\obj\Debug\Views\NotificationWindow.baml
+D:\GitCode\DPM\obj\Debug\DPM Utility.g.resources
+D:\GitCode\DPM\obj\Debug\DPM_Utility.Properties.Resources.resources
+D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.GenerateResource.cache
+D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
+D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.CopyComplete
+D:\GitCode\DPM\obj\Debug\DPM Utility.exe
+D:\GitCode\DPM\obj\Debug\DPM Utility.pdb
+D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.g.cs
+D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.baml
