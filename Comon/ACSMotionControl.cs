@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,6 +25,19 @@ namespace DPM_Utility
         {
 
         }
+
+        public string[] GetGetEthernetCardsIP()
+        {
+            // 获取所有IP
+            IPAddress[] ipAddresses = m_com.GetEthernetCards(IPAddress.Broadcast);
+            string[] address = new string[ipAddresses.Length];
+            for (int index = 0; index < ipAddresses.Length; index++)
+            {
+                address[index] = ipAddresses[index].ToString();
+            }
+            return address;
+        }
+
         public void Connect(string ip, int port)
         {
             if (!m_com.IsConnected)

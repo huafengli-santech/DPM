@@ -83,3 +83,7 @@ D:\GitCode\DPM\obj\Debug\DPM Utility.exe
 D:\GitCode\DPM\obj\Debug\DPM Utility.pdb
 D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.g.cs
 D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.baml
+D:\GitCode\DPM\obj\Debug\Styles\DateGridStyle.baml
+D:\GitCode\DPM\obj\Debug\UserControls\AddVarsHelpWindow.g.cs
+D:\GitCode\DPM\obj\Debug\UserControls\AddVarsHelpWindow.baml
+D:\GitCode\DPM\obj\Debug\Styles\ComboBoxStyle.baml

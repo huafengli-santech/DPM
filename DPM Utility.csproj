@@ -74,9 +74,15 @@
     <Compile Include="Comon\NotifyData.cs" />
     <Compile Include="Comon\ShowMessage.cs" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Date\VarInfo.cs" />
+    <Compile Include="UserControls\AddVarsHelpWindow.xaml.cs">
+      <DependentUpon>AddVarsHelpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Buffer.xaml.cs" />
     <Compile Include="UserControls\HelpPng.xaml.cs" />
+    <Compile Include="ViewModels\AddVarsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\SoftWareViewModel.cs" />
     <Compile Include="Views\DpmParameter.xaml.cs" />
     <Compile Include="Views\MainWindow.xaml.cs" />
     <Compile Include="Views\MotionDetection.xaml.cs" />
@@ -91,6 +97,14 @@
     <Page Include="Styles\CheckRadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\ComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DateGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\IconButtonStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +125,10 @@
     <Page Include="Styles\TextBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\AddVarsHelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Buffer.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -172,6 +190,9 @@
   <ItemGroup>
     <Resource Include="Img\help.png" />
     <Resource Include="Img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\AddVarsHelp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

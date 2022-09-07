@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace DPM_Utility.Base
 {
-    internal class IcommandBase : ICommand
+    public class IcommandBase : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

@@ -4,17 +4,124 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DPM_Utility.Views"
+              xmlns:Controls="clr-namespace:DPM_Utility.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="360" d:DesignWidth="616" Background="Transparent">
     <Border CornerRadius="0 0 8 0"  Name="wholeBorder">
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition />
-                <RowDefinition Height="33"/>
+                <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="IP设置"/>
+            <!--ACS连接控制-->
+            <Viewbox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="IP:" Margin="10 0"/>
+                    <ComboBox Margin="10 0"  
+                              Style="{StaticResource cmbstyle}"
+                              MinWidth="200"
+                              ItemsSource="{Binding IP}" x:Name="IPCbx"/>
+                    <TextBlock Text="Port:" Margin="10 0"/>
+                    <TextBox Margin="10 0" Style="{StaticResource WarkTextBoxStyle}" MinWidth="200" Text="{Binding Port}"/>
+                    <Controls:IconButton IconOnlyData="&#xe609;" 
+                                         Width="25" 
+                                         Height="25" 
+                                         Margin="5 0" 
+                                         ToolTip="连接" 
+                                         Style="{StaticResource IconOnlyButtonStyle}"          
+                                         Command="{Binding ConnectCommand}" 
+                                         CommandParameter="{Binding ElementName=IPCbx,Path=SelectedItem}"/>
+                    <Controls:IconButton IconOnlyData="&#xe606;" 
+                                         Width="25" 
+                                         Height="25" 
+                                         Margin="5 0" 
+                                         ToolTip="断开连接" 
+                                         Style="{StaticResource IconOnlyButtonStyle}" 
+                                         Command="{Binding DisconnectCommand}" />
+                </StackPanel>
+            </Viewbox>
+
+            <!--监控数据表格-->
+            <Viewbox Grid.Row="1" VerticalAlignment="Top" Margin="5" x:Name="gridViewbox">
+                <DataGrid  ItemsSource="{Binding VarInfos}"
+                      x:Name="varDataGrid"
+                    Style="{StaticResource DateGridStyle}"
+                      AutoGenerateColumns="False" 
+                      VerticalAlignment="Top"
+                      CanUserSortColumns="False"     
+                      IsReadOnly="False"
+                      CanUserResizeColumns="False" 
+                      MaxHeight="400" 
+                      CanUserResizeRows="False" 
+                      SelectionMode="Single"
+                      CanUserReorderColumns="False" 
+                      AlternationCount="2"  
+                      RowHeaderWidth="0" 
+                      CanUserAddRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="轴号" 
+                                            Width="150"  
+                                            Binding="{Binding  Axis}"/>
+                        <DataGridTextColumn Header="监测变量"   
+                                            Width="120"  
+                                            Binding="{Binding DetecVars}"/>
+                        <DataGridTextColumn Header="检测类型"  
+                                            Width="120"  
+                                            Binding="{Binding Type}"/>
+                        <DataGridTextColumn Header="阈值"  
+                                            Width="130"  
+                                            Binding="{Binding Threshold}"/>
+                        <DataGridTextColumn Header="峰值电流"  
+                                            Width="140"  
+                                            Binding="{Binding Maxcurrent}"/>
+                        <DataGridTextColumn Header="模拟量输入分辨率"  
+                                            Width="140"  
+                                            Binding="{Binding AnalogResolution}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Viewbox>
+            <!--添加需要增加的变量-->
+            <Viewbox Grid.Row="2" Margin="0 2">
+                <StackPanel Orientation="Horizontal">
+                    <Controls:IconButton IconOnlyData="&#xe651;" 
+                                 Margin="20 0"
+                                 Width="30"
+                                 Height="30"
+                                 FontSize="20"
+                                 Foreground="#0073bd"
+                                 FontWeight="Bold"
+                                 Command="{Binding AddNewVarCommand}"
+                                 Style="{StaticResource IconOnlyButtonStyle}"
+                                 ToolTip="添加新变量监控"
+                                 />
+                    <Controls:IconButton IconOnlyData="&#xe634;" 
+                                 Margin="20 0"
+                                 Width="30"
+                                 Height="30"
+                                 FontSize="20"
+                                 Foreground="#606060"
+                                 FontWeight="Bold"
+                                 Command="{Binding RemoveVarCommand}"
+                                 CommandParameter="{Binding ElementName=varDataGrid}"
+                                 Style="{StaticResource IconOnlyButtonStyle}"
+                                 ToolTip="删除选中变量"
+                                 />
+                    <Controls:IconButton IconOnlyData="&#xe604;" 
+                                 Margin="20 0"
+                                 Width="30"
+                                 Height="30"
+                                 FontSize="20"
+                                 Foreground="#606060"
+                                 FontWeight="Bold"
+                                 Command="{Binding VarHelpCommand}"
+                                 Style="{StaticResource IconOnlyButtonStyle}"
+                                 ToolTip="帮助"
+                                 />
+                </StackPanel>
+            </Viewbox>
+
         </Grid>
     </Border>
 </UserControl>

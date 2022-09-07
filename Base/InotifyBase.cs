@@ -17,5 +17,6 @@ namespace DPM_Utility.Base
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

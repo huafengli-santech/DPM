@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="Styles/ScrollviewStyle.xaml"/>
                 <ResourceDictionary Source="Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="Styles/ListboxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/DateGridStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

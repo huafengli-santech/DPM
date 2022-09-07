@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DPM_Utility.ViewModels
 {
-    internal class MainWindowViewModel:InotifyBase
+    public class MainWindowViewModel:InotifyBase
     {
         public ObservableCollection<string> ListButtonSource { get; set; } = new ObservableCollection<string>();
         private string[] ListButtonName = { "参数设定", "状态检测","软件配置" };
-        private string[] ViewsList = { "DpmParameter","MotionDectection",""};
 
         private FrameworkElement  _mainContent;
 
@@ -25,11 +25,22 @@ namespace DPM_Utility.ViewModels
             set { _mainContent = value; DoNotify(); }
         }
 
+        private  Brush _connnectled;
+
+        public  Brush ConnectLed
+        {
+            get { return _connnectled; }
+            set { _connnectled = value;  }
+        }
+
+
 
         public MainWindowViewModel()
         {
             //默认窗体就是软件设置界面窗体
             MainContent = new SoftWareSetup();
+            //默认未连接状态
+            ConnectLed = Brushes.Gray;
             //加载列表
             for (int i = 0; i < ListButtonName.Length; i++)
             {

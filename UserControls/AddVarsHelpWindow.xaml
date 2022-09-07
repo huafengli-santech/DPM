@@ -1,0 +1,26 @@
+﻿<Window x:Class="DPM_Utility.UserControls.AddVarsHelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DPM_Utility.UserControls"
+        xmlns:Controls="clr-namespace:DPM_Utility.Controls"
+        mc:Ignorable="d" WindowStyle="None" AllowsTransparency="True" 
+        Background="Transparent" WindowStartupLocation="Manual"
+        Title="添加属性窗体" Height="161" Width="791" x:Name="window">
+    <Border CornerRadius="8" Background="White" MouseDown="Border_MouseDown">
+        <Viewbox>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <Image Source="../Img/AddVarsHelp.png" />
+                <Controls:IconButton IconOnlyData="&#xe620;" 
+                                     Style="{StaticResource IconOnlyButtonStyle}" 
+                                     Width="20" 
+                                     Height="20" 
+                                     FontSize="20" 
+                                     Margin="10 0"
+                                     Command="{Binding CloseCommand}"
+                                     CommandParameter="{Binding ElementName=window}"/>
+            </StackPanel>
+        </Viewbox>
+    </Border>
+</Window>
