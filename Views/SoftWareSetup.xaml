@@ -84,7 +84,7 @@
                         <DataGridTextColumn Header="检测类型"  
                                             Width="120"  
                                             Binding="{Binding Type}"/>
-                        <DataGridTextColumn Header="阈值"  
+                        <DataGridTextColumn Header="采样阈值"  
                                             Width="130"  
                                             Binding="{Binding Threshold}"/>
                         <DataGridTextColumn Header="峰值电流"  

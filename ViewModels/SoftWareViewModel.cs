@@ -65,7 +65,7 @@ namespace DPM_Utility.ViewModels
 			//初始化列表测试
 			VarInfos = new ObservableCollection<VarInfo>();
             //添加测试
-            VarInfos.Add(new VarInfo() { Axis=10086,Type=3});
+            VarInfos.Add(new VarInfo() { Axis=1,DetecVars=1,Type=3,Threshold=1,Maxcurrent=2,AnalogResolution=1});
 
 
             //连接控制器指令
@@ -137,26 +137,23 @@ namespace DPM_Utility.ViewModels
 
         private void ReadDataGridSource( object obj)
         {
-
+            string keys = "";
+            MainWindow.T_DpmParaVar.Clear();
             for (int i = 0; i < VarInfos.Count; i++)
             {
                 //datagrid中需要将EnableRowVirtualization属性设置为Fasle,不然仅一行时会全部为Null
                 VarInfo info = VarInfos[i] as VarInfo;
                 if (IsPropNull(info))
                 {
-                    string keys = $"轴号：{info.Axis}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    keys = $"检测变量：{info.DetecVars}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    keys = $"检测类型：{info.Type}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    keys = $"阈值：{info.Threshold}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    keys = $"峰值电流：{info.Maxcurrent}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    keys = $"模拟量输入分辨率：{info.AnalogResolution}";
+                    keys += $"轴号：{info.Axis}\n";
+                    keys += $"检测变量：{info.DetecVars}\n";
+                    keys += $"检测类型：{info.Type}\n";
+                    keys += $"采样阈值：{info.Threshold}\n";
+                    keys += $"峰值电流：{info.Maxcurrent}\n";
+                    keys += $"模拟量输入分辨率：{info.AnalogResolution}";
                     MainWindow.T_DpmParaVar.Add(keys);
                     MainWindow.show.Show("数据生成中，请稍后", "生成提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
+                    MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar);
                 }
                 else
                 {

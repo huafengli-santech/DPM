@@ -66,42 +66,43 @@ namespace DPM_Utility
         public StringBuilder GetBuffer(List<string> var)
         {
             SB.Clear();
-            string[] varname = new string[var.Count];
-            string[] varvalue = new string[var.Count];
             for (int i = 0; i < var.Count; i++)
             {
-                string[] vars = var[i].Split('：');
-                varname[i] = vars[0];
-                varvalue[i] = vars[1];
-            }
-            for (int i = 0; i < var.Count; i++)
-            {
-                switch (var[i])
+                //先将字符串分割成字符串
+                string[] vars = var[i].Split('\n');
+                //将数据分为变量名+值
+                string[] varname = new string[vars.Length];
+                string[] varvalue = new string[vars.Length];
+                for (int j = 0; j < vars.Length; j++)
                 {
-                    //case "测试项目":
-                    //    TestItemFunc(value[i]);
-                    //    break;
-                    //case "采样轴号":
-                    //    TestAxisFunc(value[i]);
-                    //    break;
-                    //case "测量类型":
-                    //    TestTypeFunc(value[i]);
-                    //    break;
-                    //case "采样阈值":
-                    //    TestThresholdFunc(value[i]);
-                    //    break;
-                    //case "存放buffer号":
-                    //    TestBufferFunc(value[i]);
-                    //    break;
-                    //case "驱动峰值电流":
-                    //    DriveCurrentFunc(value[i]);
-                    //    break;
-                    //case "模拟量输入分辨率":
-                    //    AnalogResFunc(value[i]);
-                    //    break;
-                    //default:
-                    //    break;
+                    string[] varstr = vars[j].Split('：');
+                    varname[j] = varstr[0];
+                    varvalue[j] = varstr[1];
+                    switch (varname[j])
+                    {
+                        case "测试变量":
+                            TestItemFunc(varvalue[j]);
+                            break;
+                        case "轴号":
+                            TestAxisFunc(varvalue[j]);
+                            break;
+                        case "检测类型":
+                            TestTypeFunc(varvalue[j]);
+                            break;
+                        case "采样阈值":
+                            TestThresholdFunc(varvalue[j]);
+                            break;
+                        case "峰值电流":
+                            DriveCurrentFunc(varvalue[j]);
+                            break;
+                        case "模拟量输入分辨率":
+                            AnalogResFunc(varvalue[j]);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                
             }
             return DynamicCreatbuffer();
         }
