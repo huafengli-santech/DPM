@@ -131,7 +131,6 @@ namespace DPM_Utility.Views
         //    RadioButton btn = sender as RadioButton;
         //    this.frmMain.Navigate(new Uri(btn.Tag.ToString() + ".xaml", UriKind.Relative));
         //}
-        private RadioButtonName radioname;
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (!IsInitFinsh) { return; }
@@ -152,29 +151,7 @@ namespace DPM_Utility.Views
 
         private void DynamicAddLeftButtonList()
         {
-            //for (int i = 0; i < leftButtonList.Length; i++)
-            //{
-            //    RadioButton radio = new RadioButton();
-            //    radio.DataContext = radioname;
-            //    radio.Name = leftButtonList_N[i];
-            //    radioname = new RadioButtonName();
-            //    radioname.Name = leftButtonList[i];
-            //    //绑定数据
-            //    BindingOperations.SetBinding(radio, RadioButton.ContentProperty, new Binding { Source = radioname, Path = new PropertyPath("Name"), Mode = BindingMode.OneWay });
-            //    //设置样式
-            //    Style myStyle = (Style)this.FindResource("CheckRadioButtonStyle");
-            //    radio.Style = myStyle;
-            //    //设置左右间隔
-            //    radio.Margin = new Thickness(10,0,0,0);
-            //    radio.Height = 35;
-            //    radio.Checked += RadioButton_Checked;
-            //    if (radio.Content.ToString()== leftButtonList[0])
-            //    {
-            //        radio.IsChecked = false;
-            //        radio.IsChecked = true;
-            //    }
-            //    this.leftButtonListPanel.Children.Add(radio);
-            //}
+
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

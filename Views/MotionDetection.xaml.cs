@@ -1,4 +1,5 @@
-﻿using LiveCharts;
+﻿using DPM_Utility.ViewModels;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,9 @@ namespace DPM_Utility.Views
         public MotionDetection()
         {
             InitializeComponent();
+            this.DataContext = new SoftWareViewModel();
+
+
             seriesCollection = new List<SeriesCollection>();
             MonitorVar = new List<string>();
             MonitorMean = new List<string>();
@@ -78,7 +82,7 @@ namespace DPM_Utility.Views
             StandardListInit(StandardVar, StandardMean);
 
             //先清除
-            Lines_WarpPanel.Children.Clear();
+            //Lines_WarpPanel.Children.Clear();
             seriesCollection.Clear();
             //根据变量值个数来添加曲线数
             for (int i = 0; i < MonitorVar.Count; i++)
@@ -182,7 +186,7 @@ namespace DPM_Utility.Views
                 chart.DataContext = this;
 
                 border.Child = grid;
-                Lines_WarpPanel.Children.Add(border);
+                //Lines_WarpPanel.Children.Add(border);
             }
         }
 
@@ -216,7 +220,7 @@ namespace DPM_Utility.Views
                             PutFault();
                             seriesCollection[i][0].Values.RemoveAt(0);
                         }
-                        UpdateValue(Lines_WarpPanel.Children);
+                        //UpdateValue(Lines_WarpPanel.Children);
                     });
                 }
             });
@@ -420,7 +424,7 @@ namespace DPM_Utility.Views
             SeriesCollection series;
 
             //先清除
-            Lines_WarpPanel.Children.Clear();
+            //Lines_WarpPanel.Children.Clear();
             seriesCollection.Clear();
             //根据变量值个数来添加曲线数
             for (int i = 0; i < MonitorVar.Count; i++)

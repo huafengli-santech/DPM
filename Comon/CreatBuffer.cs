@@ -63,7 +63,48 @@ namespace DPM_Utility
             }
             return DynamicCreatbuffer();
         }
-
+        public StringBuilder GetBuffer(List<string> var)
+        {
+            SB.Clear();
+            string[] varname = new string[var.Count];
+            string[] varvalue = new string[var.Count];
+            for (int i = 0; i < var.Count; i++)
+            {
+                string[] vars = var[i].Split('：');
+                varname[i] = vars[0];
+                varvalue[i] = vars[1];
+            }
+            for (int i = 0; i < var.Count; i++)
+            {
+                switch (var[i])
+                {
+                    //case "测试项目":
+                    //    TestItemFunc(value[i]);
+                    //    break;
+                    //case "采样轴号":
+                    //    TestAxisFunc(value[i]);
+                    //    break;
+                    //case "测量类型":
+                    //    TestTypeFunc(value[i]);
+                    //    break;
+                    //case "采样阈值":
+                    //    TestThresholdFunc(value[i]);
+                    //    break;
+                    //case "存放buffer号":
+                    //    TestBufferFunc(value[i]);
+                    //    break;
+                    //case "驱动峰值电流":
+                    //    DriveCurrentFunc(value[i]);
+                    //    break;
+                    //case "模拟量输入分辨率":
+                    //    AnalogResFunc(value[i]);
+                    //    break;
+                    //default:
+                    //    break;
+                }
+            }
+            return DynamicCreatbuffer();
+        }
         private StringBuilder DynamicCreatbuffer()
         {
             //D-BUFFER里面的程序部分

@@ -9,6 +9,10 @@ namespace DPM_Utility
 {
     public  class ShowMessage
     {
+        //红色    #f50057
+        //绿色    #a1ffce
+        //黄色    #ffee58
+
         public static List<NotificationWindow> _dialogs = new List<NotificationWindow>();
         public void Show(string code,string Title , System.Windows.Media.Brush color,int time)
         {

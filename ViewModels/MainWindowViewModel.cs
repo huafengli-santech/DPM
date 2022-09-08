@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace DPM_Utility.ViewModels
 {
@@ -16,7 +18,7 @@ namespace DPM_Utility.ViewModels
     {
         public ObservableCollection<string> ListButtonSource { get; set; } = new ObservableCollection<string>();
         private string[] ListButtonName = { "参数设定", "状态检测","软件配置" };
-
+        //右侧控件
         private FrameworkElement  _mainContent;
 
         public FrameworkElement MainContent
@@ -25,13 +27,7 @@ namespace DPM_Utility.ViewModels
             set { _mainContent = value; DoNotify(); }
         }
 
-        private  Brush _connnectled;
 
-        public  Brush ConnectLed
-        {
-            get { return _connnectled; }
-            set { _connnectled = value;  }
-        }
 
 
 
@@ -39,8 +35,8 @@ namespace DPM_Utility.ViewModels
         {
             //默认窗体就是软件设置界面窗体
             MainContent = new SoftWareSetup();
+            
             //默认未连接状态
-            ConnectLed = Brushes.Gray;
             //加载列表
             for (int i = 0; i < ListButtonName.Length; i++)
             {

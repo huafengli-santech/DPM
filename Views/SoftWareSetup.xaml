@@ -18,28 +18,41 @@
             <!--ACS连接控制-->
             <Viewbox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="IP:" Margin="10 0"/>
+                    <Ellipse  Width="15" Height="15" Fill="{Binding ConnectLed}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                    <TextBlock Text="IP:" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="10 0"/>
                     <ComboBox Margin="10 0"  
                               Style="{StaticResource cmbstyle}"
                               MinWidth="200"
-                              ItemsSource="{Binding IP}" x:Name="IPCbx"/>
-                    <TextBlock Text="Port:" Margin="10 0"/>
-                    <TextBox Margin="10 0" Style="{StaticResource WarkTextBoxStyle}" MinWidth="200" Text="{Binding Port}"/>
+                              ItemsSource="{Binding IP}" 
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              x:Name="IPCbx"/>
+                    <TextBlock Text="Port:" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="10 0"/>
+                    <TextBox Margin="10 0" 
+                             Style="{StaticResource WarkTextBoxStyle}" 
+                             MinWidth="200" 
+                             Text="{Binding Port}"/>
                     <Controls:IconButton IconOnlyData="&#xe609;" 
-                                         Width="25" 
-                                         Height="25" 
-                                         Margin="5 0" 
-                                         ToolTip="连接" 
-                                         Style="{StaticResource IconOnlyButtonStyle}"          
-                                         Command="{Binding ConnectCommand}" 
-                                         CommandParameter="{Binding ElementName=IPCbx,Path=SelectedItem}"/>
+                            Width="25" 
+                            Height="25" 
+                            Margin="5 0" 
+                            ToolTip="连接" 
+                            Style="{StaticResource IconOnlyButtonStyle}"          
+                            Command="{Binding ConnectCommand}" 
+                            CommandParameter="{Binding ElementName=IPCbx,Path=SelectedItem}"/>
                     <Controls:IconButton IconOnlyData="&#xe606;" 
-                                         Width="25" 
-                                         Height="25" 
-                                         Margin="5 0" 
-                                         ToolTip="断开连接" 
-                                         Style="{StaticResource IconOnlyButtonStyle}" 
-                                         Command="{Binding DisconnectCommand}" />
+                            Width="25" 
+                            Height="25" 
+                            Margin="5 0" 
+                            ToolTip="断开连接" 
+                            Style="{StaticResource IconOnlyButtonStyle}" 
+                            Command="{Binding DisconnectCommand}" />
                 </StackPanel>
             </Viewbox>
 
@@ -47,7 +60,8 @@
             <Viewbox Grid.Row="1" VerticalAlignment="Top" Margin="5" x:Name="gridViewbox">
                 <DataGrid  ItemsSource="{Binding VarInfos}"
                       x:Name="varDataGrid"
-                    Style="{StaticResource DateGridStyle}"
+                      Style="{StaticResource DateGridStyle}"
+                      EnableRowVirtualization="False"
                       AutoGenerateColumns="False" 
                       VerticalAlignment="Top"
                       CanUserSortColumns="False"     
@@ -102,7 +116,7 @@
                                  Height="30"
                                  FontSize="20"
                                  Foreground="#606060"
-                                 FontWeight="Bold"
+                                 FontWeight="Light"
                                  Command="{Binding RemoveVarCommand}"
                                  CommandParameter="{Binding ElementName=varDataGrid}"
                                  Style="{StaticResource IconOnlyButtonStyle}"
@@ -118,6 +132,18 @@
                                  Command="{Binding VarHelpCommand}"
                                  Style="{StaticResource IconOnlyButtonStyle}"
                                  ToolTip="帮助"
+                                 />
+                    <Controls:IconButton IconOnlyData="&#xe60a;" 
+                                 Margin="20 0"
+                                 Width="30"
+                                 Height="30"
+                                 FontSize="20"
+                                 Foreground="#0073bd"
+                                 FontWeight="Light"
+                                 Command="{Binding LoadToFileCommand}"
+                                 CommandParameter="{Binding ElementName=varDataGrid}"
+                                 Style="{StaticResource IconOnlyButtonStyle}"
+                                 ToolTip="下发"
                                  />
                 </StackPanel>
             </Viewbox>
