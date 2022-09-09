@@ -27,7 +27,7 @@ namespace DPM_Utility.UserControls
             CreatBuffer.UserVar = uservarTextBox.Text;
             CreatBuffer.UertVarCode = uservarcodeTextBox.Text;
             //将软件界面上的参数导入
-            StringBuilder builder = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
+            //StringBuilder builder = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
         }
     }
 }

@@ -19,7 +19,8 @@ namespace DPM_Utility.ViewModels
     public  class SoftWareViewModel:InotifyBase 
     {
 		ACSMotionControl acs = new ACSMotionControl();
-
+        //获取总的buffer数量，用于添加D-BUFFER
+        private int m_totalBufferNum = 0;
 
 		public IcommandBase ConnectCommand { get; set; }
 		public IcommandBase DisconnectCommand { get; set; }
@@ -65,7 +66,7 @@ namespace DPM_Utility.ViewModels
 			//初始化列表测试
 			VarInfos = new ObservableCollection<VarInfo>();
             //添加测试
-            VarInfos.Add(new VarInfo() { Axis=1,DetecVars=1,Type=3,Threshold=1,Maxcurrent=2,AnalogResolution=1});
+            VarInfos.Add(new VarInfo() {Buffer=0, Axis=1,DetecVars=0,Type=0,Threshold=4,Maxcurrent=5,AnalogResolution=12});
 
 
             //连接控制器指令
@@ -76,6 +77,7 @@ namespace DPM_Utility.ViewModels
 				{
                     acs.Connect(o.ToString(), Port);
                     ConnectLed = Brushes.LightGreen;
+                    m_totalBufferNum = acs.GetTotalBuffers();
                 }
 				else
 				{
@@ -137,23 +139,22 @@ namespace DPM_Utility.ViewModels
 
         private void ReadDataGridSource( object obj)
         {
-            string keys = "";
+            string[] values = new string[7];
             MainWindow.T_DpmParaVar.Clear();
+            MainWindow.T_DpmParaValue.Clear();
             for (int i = 0; i < VarInfos.Count; i++)
             {
                 //datagrid中需要将EnableRowVirtualization属性设置为Fasle,不然仅一行时会全部为Null
                 VarInfo info = VarInfos[i] as VarInfo;
                 if (IsPropNull(info))
                 {
-                    keys += $"轴号：{info.Axis}\n";
-                    keys += $"检测变量：{info.DetecVars}\n";
-                    keys += $"检测类型：{info.Type}\n";
-                    keys += $"采样阈值：{info.Threshold}\n";
-                    keys += $"峰值电流：{info.Maxcurrent}\n";
-                    keys += $"模拟量输入分辨率：{info.AnalogResolution}";
-                    MainWindow.T_DpmParaVar.Add(keys);
-                    MainWindow.show.Show("数据生成中，请稍后", "生成提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
-                    MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar);
+                    values[0] += $"{info.Buffer} ";
+                    values[1] += $"{info.Axis} ";
+                    values[2] += $"{info.DetecVars} ";
+                    values[3] += $"{info.Type} ";
+                    values[4] += $"{info.Threshold} ";
+                    values[5] += $"{info.Maxcurrent} ";
+                    values[6] += $"{info.AnalogResolution} ";
                 }
                 else
                 {
@@ -161,6 +162,28 @@ namespace DPM_Utility.ViewModels
                 }
 
             }
+            for (int j = 0; j < values.Length; j++)
+            {
+                MainWindow.T_DpmParaValue.Add(values[j]);
+            }
+            MainWindow.T_DpmParaVar.Add("Buffer号");
+            MainWindow.T_DpmParaVar.Add("采样轴号");
+            MainWindow.T_DpmParaVar.Add("检测变量");
+            MainWindow.T_DpmParaVar.Add("检测类型");
+            MainWindow.T_DpmParaVar.Add("采样阈值");
+            MainWindow.T_DpmParaVar.Add("峰值电流");
+            MainWindow.T_DpmParaVar.Add("模拟量输入分辨率");
+            StringBuilder[] builder = null;
+            builder = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar,MainWindow.T_DpmParaValue);
+            int.TryParse(CreatBuffer.TestBuffer, out int buffernum);
+            //将数据添加进D-BUFFER中
+            acs.AppendBuffer(m_totalBufferNum, builder[0].ToString());
+
+            //将数据添加进指定buffer中
+            acs.AppendBuffer(buffernum, builder[1].ToString());
+            //直接编译D-BUFFER即可
+            //acs.CompileBuffer(m_totalBufferNum);
+
         }
 
         /// <summary>

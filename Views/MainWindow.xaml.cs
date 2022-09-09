@@ -43,8 +43,6 @@ namespace DPM_Utility.Views
         public static string S_PageA_String;
         public static string S_PageB_String;
 
-        //获取系统启动文件目录
-        static string m_Path = AppDomain.CurrentDomain.BaseDirectory;
 
         //系统启动项目根目录下   Ini配置文件
         public static string m_IniPath = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup";
@@ -57,17 +55,14 @@ namespace DPM_Utility.Views
         public static List<string> T_DpmParaVar;
         public static List<string> T_DpmParaValue;
 
-        MotionDetection motion = new MotionDetection();
-
         //ACS初始化
         ACSMotionControl m_chanel = new ACSMotionControl();
 
-        bool IsInitFinsh = false;
         MainWindowViewModel model = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
-
+            //绑定ViewModel
             this.DataContext = model;
 
             T_DpmParaVar = new List<string>();
@@ -91,10 +86,6 @@ namespace DPM_Utility.Views
                 FileStream fs = new FileStream(m_BackupFileName, FileMode.CreateNew);
             }
 
-            IsInitFinsh = true;
-            //动态创建左侧列表
-            DynamicAddLeftButtonList();
-
             //测试初始化
             ConInit();
 
@@ -114,7 +105,6 @@ namespace DPM_Utility.Views
         {
             try
             {
-                //m_chanel.Simconnect();
                 m_chanel.Connect(IP, 701);
                 MainWindow.show.Show("Connect success", "连接提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
             }
@@ -123,74 +113,9 @@ namespace DPM_Utility.Views
 
             }
         }
-
-
-
-        //private void btnNav_Click(object sender, RoutedEventArgs e)
-        //{
-        //    RadioButton btn = sender as RadioButton;
-        //    this.frmMain.Navigate(new Uri(btn.Tag.ToString() + ".xaml", UriKind.Relative));
-        //}
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!IsInitFinsh) { return; }
-            //this.dynamicWrapPanel.Children.Clear();
-            RadioButton btn = sender as RadioButton;
-            if (btn.Content.ToString() == "参数设定")
-            {
-                this.frmMain.Navigate(new Uri("DpmParameter.xaml", UriKind.Relative));
-
-            }
-            else if (btn.Content.ToString() == "状态检测")
-            {
-                this.frmMain.Navigate(new Uri("MotionDetection.xaml", UriKind.Relative));
-            }
-
-            UpdateLayout();
-        }
-
-        private void DynamicAddLeftButtonList()
-        {
-
-        }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
-        private void minFormButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = this.WindowState == WindowState.Minimized ? WindowState.Normal : WindowState.Minimized;
-        }
-
-        private void maxFormButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = this.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-        }
-
-        private void closeFormButton_Click(object sender, RoutedEventArgs e)
-        {
-            m_chanel.CloseCom();
-            this.Close();
-        }
-    }
-    public class RadioButtonName : INotifyPropertyChanged
-    {
-        private string _name;
-        public string Name
-        {
-            set
-            {
-                _name = value;
-                if (PropertyChanged != null)//有改变
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("Name"));//对Name进行监听
-                }
-            }
-            get
-            {
-                return _name;
-            }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

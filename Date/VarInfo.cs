@@ -8,7 +8,8 @@ namespace DPM_Utility.Date
 {
     public class VarInfo
     {
-        public int VarNum { get { return 6; } }
+        public int VarNum { get { return 7; } }
+        public object Buffer { get; set; }
         public object Axis { get; set; }
         public object DetecVars { get; set; }
         public object Type { get; set; }

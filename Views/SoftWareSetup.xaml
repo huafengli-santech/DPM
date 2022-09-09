@@ -73,25 +73,29 @@
                       CanUserReorderColumns="False" 
                       AlternationCount="2"  
                       RowHeaderWidth="0" 
+                      FontSize="15"
                       CanUserAddRows="False" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="轴号" 
-                                            Width="150"  
+                        <DataGridTextColumn Header="buffer号" 
+                                            Width="auto"  
+                                            Binding="{Binding  Buffer}"/>
+                        <DataGridTextColumn Header="采样轴号" 
+                                            Width="auto"  
                                             Binding="{Binding  Axis}"/>
                         <DataGridTextColumn Header="监测变量"   
-                                            Width="120"  
+                                            Width="auto"  
                                             Binding="{Binding DetecVars}"/>
                         <DataGridTextColumn Header="检测类型"  
-                                            Width="120"  
+                                            Width="auto"  
                                             Binding="{Binding Type}"/>
                         <DataGridTextColumn Header="采样阈值"  
-                                            Width="130"  
+                                            Width="auto"  
                                             Binding="{Binding Threshold}"/>
                         <DataGridTextColumn Header="峰值电流"  
-                                            Width="140"  
+                                            Width="auto"  
                                             Binding="{Binding Maxcurrent}"/>
                         <DataGridTextColumn Header="模拟量输入分辨率"  
-                                            Width="140"  
+                                            Width="auto"  
                                             Binding="{Binding AnalogResolution}"/>
                     </DataGrid.Columns>
                 </DataGrid>

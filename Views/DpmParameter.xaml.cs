@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +14,7 @@ namespace DPM_Utility.Views
     public partial class DpmParameter : UserControl
     {
         //ACS初始化
-        ACSMotionControl m_chanel = new ACSMotionControl();
+        ACSMotionControl m_com = new ACSMotionControl();
         public DpmParameter()
         {
             InitializeComponent();
@@ -49,20 +50,20 @@ namespace DPM_Utility.Views
             if (!File.Exists(MainWindow.m_ParaFileName))
             {
                 MainWindow.paramFile.IniWriteValue("参数举例（具体参数请在  Para  组中添加添加）", "  ***参数中间用空格分隔***   ", "变量不能增加，其他变量请在状态检测界面添加");
-                MainWindow.paramFile.IniWriteValue("Parameter", "测试项目", "0/1/2(0：PE检测 1：峰值电流检测 2：自定义变量检测，三者取其一，不填写默认0)");
+                MainWindow.paramFile.IniWriteValue("Parameter", "检测类型", "0/1/2(0：PE检测 1：峰值电流检测 2：自定义变量检测，三者取其一，不填写默认0)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "采样轴号", "0 1(轴列表，最少填写一个，最大到控制器轴数限制)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "测量类型", "0 0(0：加速段；1：匀速段；2：加减速段；3：任意轨迹，需要与轴个数一一对应，不填写默认0)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "采样阈值", "0.001 0.002(需要与轴个数一一对应，不填写默认0)");
-                MainWindow.paramFile.IniWriteValue("Parameter", "存放buffer号", "0(存放代码的buffer号，最大到控制器buffer限制)");
-                MainWindow.paramFile.IniWriteValue("Parameter", "驱动峰值电流", "40 20(可选参数，选择峰值电流检测时使用，轴所在从站电流最大值，需要与轴个数一一对应，不填写默认0)");
+                MainWindow.paramFile.IniWriteValue("Parameter", "Buffer号", "0(存放代码的buffer号，最大到控制器buffer限制)");
+                MainWindow.paramFile.IniWriteValue("Parameter", "峰值电流", "40 20(可选参数，选择峰值电流检测时使用，轴所在从站电流最大值，需要与轴个数一一对应，不填写默认0)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "模拟量输入分辨率", "12 16(可选参数，选择峰值电流检测时使用，需要与轴个数一一对应（bit位），不填写默认0)");
 
-                MainWindow.paramFile.IniWriteValue("Para", "测试项目", "");
+                MainWindow.paramFile.IniWriteValue("Para", "检测项目", "");
                 MainWindow.paramFile.IniWriteValue("Para", "采样轴号", "");
-                MainWindow.paramFile.IniWriteValue("Para", "测量类型", "");
+                MainWindow.paramFile.IniWriteValue("Para", "检测阶段", "");
                 MainWindow.paramFile.IniWriteValue("Para", "采样阈值", "");
-                MainWindow.paramFile.IniWriteValue("Para", "存放buffer号", "");
-                MainWindow.paramFile.IniWriteValue("Para", "驱动峰值电流", "");
+                MainWindow.paramFile.IniWriteValue("Para", "Buffer号", "");
+                MainWindow.paramFile.IniWriteValue("Para", "峰值电流", "");
                 MainWindow.paramFile.IniWriteValue("Para", "模拟量输入分辨率", "");
             }
 
@@ -136,7 +137,6 @@ namespace DPM_Utility.Views
 
         private void loadToIni_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder builder = null;
             if (MainWindow.T_DpmParaValue[0] == "2")
             {
                 FileManeger_Popup.IsOpen = false;
@@ -145,10 +145,16 @@ namespace DPM_Utility.Views
             else
             {
                 //其他情况下，直接将软件界面上的参数导入
-                builder = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
+                StringBuilder[] builders = null;
+                builders = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
                 int.TryParse(CreatBuffer.TestBuffer, out int buffernum);
-                m_chanel.AppendBuffer(buffernum, builder.ToString());
-                m_chanel.CompileBuffer(buffernum);
+                //将数据添加进D-BUFFER中
+                m_com.AppendBuffer(m_com.GetTotalBuffers(), builders[0].ToString());
+
+                //将数据添加进指定buffer中
+                m_com.AppendBuffer(buffernum, builders[1].ToString());
+                //直接编译D-BUFFER即可
+                //acs.CompileBuffer(m_totalBufferNum);
             }
 
         }

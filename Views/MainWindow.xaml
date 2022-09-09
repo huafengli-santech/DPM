@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DPM_Utility"
         xmlns:Controls="clr-namespace:DPM_Utility.Controls"
-        mc:Ignorable="d"
+        mc:Ignorable="d" x:Name="wholeWindow"
         Title="DPM Monitor" Height="450" Width="800" Topmost="False" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="True">
 
     <Border Background="#ffffff" CornerRadius="10" MouseLeftButtonDown="Border_MouseLeftButtonDown">
@@ -24,16 +24,26 @@
                     <Border>
                         <StackPanel>
                             <Grid>
-                                <Image Margin="0 20" Source="/Img/LOGO.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="50" Height="50"/>
-                                
+                                <Image Margin="0 20" 
+                                       Source="/Img/LOGO.png" 
+                                       VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center"  
+                                       Width="50" 
+                                       Height="50"/>
                             </Grid>
-                            <TextBlock Text="DPM Utility" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="#0073bd"/>
+                            <TextBlock Text="DPM Utility" 
+                                       VerticalAlignment="Top" 
+                                       HorizontalAlignment="Center" 
+                                       FontSize="16" 
+                                       Foreground="#0073bd"/>
                         </StackPanel>
                     </Border>
                     <!--左侧按钮-->
                     <!--<StackPanel Orientation="Vertical" Grid.Row="1" x:Name="leftButtonListPanel"/>-->
-                    <ListBox ItemsSource="{Binding ListButtonSource}" SelectedIndex="{Binding SelectedIndex}"
-                             Grid.Row="1" Style="{StaticResource ListboxStyle}"/>
+                    <ListBox ItemsSource="{Binding ListButtonSource}" 
+                             SelectedIndex="{Binding SelectedIndex}"
+                             Grid.Row="1" 
+                             Style="{StaticResource ListboxStyle}"/>
                 </Grid>
             </Border>
             <!--关闭、最大、最小化-->
@@ -41,16 +51,38 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
-                        <!--<RowDefinition Height="15"/>-->
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
-                        <Controls:IconButton ToolTip="最小化" x:Name="minFormButton" Click="minFormButton_Click" Width="25" Height="25" Margin="5 0" IconOnlyData="&#xe6e8;" Style="{StaticResource IconOnlyButtonStyle}"/>
-                        <Controls:IconButton ToolTip="最大化" x:Name="maxFormButton" Click="maxFormButton_Click" Width="25" Height="25" Margin="5 0" IconOnlyData="&#xe621;" Style="{StaticResource IconOnlyButtonStyle}"/>
-                        <Controls:IconButton ToolTip="关闭" x:Name="closeFormButton" Click="closeFormButton_Click" Width="25" Height="25" Margin="5 0" IconOnlyData="&#xe644;" Style="{StaticResource IconOnlyButtonStyle}"/>
+                        <Controls:IconButton ToolTip="最小化" 
+                                             Command="{Binding MinFormCommand}" 
+                                             CommandParameter="{Binding ElementName=wholeWindow}"
+                                             Width="25" 
+                                             Height="25" 
+                                             Margin="5 0" 
+                                             IconOnlyData="&#xe6e8;" 
+                                             Style="{StaticResource IconOnlyButtonStyle}"/>
+                        <Controls:IconButton ToolTip="最大化" 
+                                             Command="{Binding MaxFormCommand}" 
+                                             CommandParameter="{Binding ElementName=wholeWindow}"
+                                             Width="25" 
+                                             Height="25" 
+                                             Margin="5 0" 
+                                             IconOnlyData="&#xe621;" 
+                                             Style="{StaticResource IconOnlyButtonStyle}"/>
+                        <Controls:IconButton ToolTip="关闭" 
+                                             Command="{Binding CloseFormCommand}" 
+                                             CommandParameter="{Binding ElementName=wholeWindow}"
+                                             Width="25" 
+                                             Height="25" 
+                                             Margin="5 0" 
+                                             IconOnlyData="&#xe644;" 
+                                             Style="{StaticResource IconOnlyButtonStyle}"/>
                     </StackPanel>
-                    <!--<WrapPanel VerticalAlignment="Center" Grid.Row="1"  x:Name="dynamicWrapPanel"/>-->
-                    <Frame Name="frmMain" NavigationUIVisibility="Hidden" Grid.Row="2" Content="{Binding MainContent}"/>
+                    <Frame Name="frmMain" 
+                                            NavigationUIVisibility="Hidden" 
+                                            Grid.Row="2" 
+                                            Content="{Binding MainContent}"/>
                 </Grid>
             </Border>
         </Grid>

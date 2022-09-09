@@ -29,29 +29,29 @@ namespace DPM_Utility
         public static string UserVar { get; set; }
         public static string UertVarCode { get; set; }
         StringBuilder SB = new StringBuilder();
-        public StringBuilder GetBuffer(List<string> var,List<string> value)
+        public StringBuilder[] GetBuffer(List<string> var,List<string> value)
         {
             SB.Clear();
             for (int i = 0; i < var.Count; i++)
             {
                 switch (var[i])
                 {
-                    case "测试项目":
+                    case "检测项目":
                         TestItemFunc(value[i]);
                         break;
                     case "采样轴号":
                         TestAxisFunc(value[i]);
                         break;
-                    case "测量类型":
+                    case "检测阶段":
                         TestTypeFunc(value[i]);
                         break;
                     case "采样阈值":
                         TestThresholdFunc(value[i]);
                         break;
-                    case "存放buffer号":
+                    case "Buffer号":
                         TestBufferFunc(value[i]);
                         break;
-                    case "驱动峰值电流":
+                    case "峰值电流":
                         DriveCurrentFunc(value[i]);
                         break;
                     case "模拟量输入分辨率":
@@ -63,7 +63,7 @@ namespace DPM_Utility
             }
             return DynamicCreatbuffer();
         }
-        public StringBuilder GetBuffer(List<string> var)
+        public StringBuilder[] GetBuffer(List<string> var)
         {
             SB.Clear();
             for (int i = 0; i < var.Count; i++)
@@ -80,11 +80,14 @@ namespace DPM_Utility
                     varvalue[j] = varstr[1];
                     switch (varname[j])
                     {
-                        case "测试变量":
-                            TestItemFunc(varvalue[j]);
+                        case "Buffer号":
+                            TestBufferFunc(varvalue[j]);
                             break;
                         case "轴号":
                             TestAxisFunc(varvalue[j]);
+                            break;
+                        case "检测变量":
+                            TestItemFunc(varvalue[j]);
                             break;
                         case "检测类型":
                             TestTypeFunc(varvalue[j]);
@@ -106,10 +109,12 @@ namespace DPM_Utility
             }
             return DynamicCreatbuffer();
         }
-        private StringBuilder DynamicCreatbuffer()
+        private StringBuilder[] DynamicCreatbuffer()
         {
+            StringBuilder[] builders = new StringBuilder[2];
+            //******************************************************************
             //D-BUFFER里面的程序部分
-            StringBuilder D_s=new StringBuilder();
+            StringBuilder D_s =new StringBuilder();
             string ss = "";//用于中转
             //DPM结构体名称
             for (int i = 0; i < TestAxis.Length; i++)
@@ -139,9 +144,14 @@ namespace DPM_Utility
             D_s.Append($"GLOBAL STATIC REAL {ss}\n");
             ss = "";
             //定义一些隐藏参数
-            D_s.Append($"GLOBAL  INT Sample_set_size_Y\n");
+            D_s.Append($"GLOBAL  INT Sample_set_size\n");
             D_s.Append($"GLOBAL STATIC INT measure_continuously\n");
-
+            D_s.Append($"\r\n");
+            //将D-BUFFER保存到第一个参数内
+            builders[0] = new StringBuilder();
+            builders[0].Append(D_s.ToString());
+            D_s.Clear();
+            //******************************************************************
             //其他buffer里面的字符串
             StringBuilder O_s = new StringBuilder();
             
@@ -214,7 +224,7 @@ namespace DPM_Utility
             {
                 for (int i = 0; i < TestAxis.Length; i++)
                 {
-                    ss += $"{TestItem}_{TestAxis[i]}.MeasureProcess(PE({TestAxis[i]}),Motion_status_{TestAxis[i]}.{TestType[i]},Sample_set_size, measure_continuously);\n";
+                    ss += $"{TestItem}_{TestAxis[i]}.MeasureProcess(PE(Axis{TestAxis[i]}),Motion_status_{TestAxis[i]}.{TestType[i]},Sample_set_size, measure_continuously);\n";
                 }
                 O_s.Append($"{ss}\n");
                 ss = "";
@@ -223,40 +233,42 @@ namespace DPM_Utility
             {
                 for (int i = 0; i < TestAxis.Length; i++)
                 {
-                    ss += $"{TestItem}_{TestAxis[i]}.MeasurePeriodically(PE({TestAxis[i]}),Motion_status_{TestAxis[i]}.{TestType[i]},Sample_set_size, measure_continuously);\n";
+                    ss += $"{TestItem}_{TestAxis[i]}.MeasurePeriodically(PE(Axis{TestAxis[i]}),Motion_status_{TestAxis[i]}.{TestType[i]},Sample_set_size, measure_continuously);\n";
                 }
                 O_s.Append($"{ss}\n");
                 ss = "";
             }
             O_s.Append($"\nSTOP\n");
             D_s.Append(O_s+"\r\n");
-            //test
-            //System.Windows.MessageBox.Show(D_s.ToString());
-            return D_s;
+            //将其余buffer的内容拷贝到index1内
+            builders[1] = new StringBuilder();
+            builders[1].Append(D_s.ToString());
+            return builders;
         }
         #region 属性
         private void TestItemFunc(string v)
         {
-            if (!string.IsNullOrEmpty(v)) TestItem = v; else { TestItem = "0"; }
-            switch (TestItem)
-            {
-                case "0":
-                    TestItem = "PE";
-                    break;
-                case "1":
-                    TestItem = "PeckCurrent";
-                    break;
-                case "2":
-                    TestItem = UserVar;
-                    break;
-            }
+            if (!string.IsNullOrEmpty(v)) TestItem = v.Trim(); else { TestItem = "0"; }
+
+                switch (TestItem)
+                {
+                    case "0":
+                        TestItem = "PE";
+                        break;
+                    case "1":
+                        TestItem = "PeckCurrent";
+                        break;
+                    case "2":
+                        TestItem = UserVar;
+                        break;
+                }
         }
 
         private void TestAxisFunc(string v)
         {
             if (!string.IsNullOrEmpty(v))
             { 
-                TestAxis = v.Split(' ');
+                TestAxis = v.Trim().Split(' ');
                 AxisCount=TestAxis.Length;
                 for (int i = 0; i < TestAxis.Length; i++)
                 {
@@ -277,7 +289,7 @@ namespace DPM_Utility
 
         private void TestTypeFunc(string v)
         {
-            if (!string.IsNullOrEmpty(v)) { TestType = v.Split(' '); }
+            if (!string.IsNullOrEmpty(v)) { TestType = v.Trim().Split(' '); }
             else
             {
                 TestType = new string[AxisCount];
@@ -309,7 +321,7 @@ namespace DPM_Utility
 
         private void TestThresholdFunc(string v)
         {
-            if (!string.IsNullOrEmpty(v)) { TestThreshold = v.Split(' '); }
+            if (!string.IsNullOrEmpty(v)) { TestThreshold = v.Trim().Split(' '); }
             else
             {
                 TestThreshold = new string[AxisCount];
@@ -322,13 +334,13 @@ namespace DPM_Utility
 
         private void TestBufferFunc(string v)
         {
-            if(!string.IsNullOrEmpty(v)) TestBuffer = v; else { TestBuffer = "0"; }
+            if(!string.IsNullOrEmpty(v)) TestBuffer = v.Trim(); else { TestBuffer = "0"; }
         }
 
         private void DriveCurrentFunc(string v)
         {
             if (TestItem == "0") { return; }//如果测试项不是峰值电流检测，则返回
-            if (!string.IsNullOrEmpty(v)) { DriveCurrent = v.Split(' '); }
+            if (!string.IsNullOrEmpty(v)) { DriveCurrent = v.Trim().Split(' '); }
             else
             {
                 DriveCurrent = new string[AxisCount];
@@ -343,7 +355,7 @@ namespace DPM_Utility
         private void AnalogResFunc(string v)
         {
             if (TestItem == "0") { return; }//如果测试项不是峰值电流检测，则返回
-            if (!string.IsNullOrEmpty(v)) { AnalogRes = v.Split(' '); }
+            if (!string.IsNullOrEmpty(v)) { AnalogRes = v.Trim().Split(' '); }
             else 
             { 
                 AnalogRes = new string[AxisCount];
@@ -354,81 +366,7 @@ namespace DPM_Utility
             }
         }
         #endregion
-        private void UploadBuffer()
-        {
-            //需要将程序上载，并保存在TXT中防止软件崩溃
 
-            for (int i = 0; i < m_chanel.GetTotalBuffers(); i++)
-            {
-                if (!string.IsNullOrEmpty(m_chanel.GetBufferString(i)))
-                {
-                    MainWindow.S_AllBufferString += $"#{i}\n{m_chanel.GetBufferString(i)}";
-                }
-            }
-            if (!string.IsNullOrEmpty(MainWindow.S_PageD_String))
-            {
-                if (!m_chanel.GetBufferString(m_chanel.GetTotalBuffers()).Contains(MainWindow.S_StructName))
-                {
-                    MainWindow.S_DBufferString = $"#A\n{m_chanel.GetBufferString(m_chanel.GetTotalBuffers())}\n!DPM Test\n{MainWindow.S_PageD_String}";
-                }
-            }
-            else
-            {
-                System.Windows.MessageBox.Show("请按照步骤操作", "参数设定提示");
-            }
-            SaveBuffer();
-        }
-
-        private void SaveBuffer()
-        {
-            StreamWriter writer = new StreamWriter(MainWindow.m_BackupFileName);
-            writer.WriteLine(MainWindow.S_AllBufferString);
-            writer.WriteLine(MainWindow.S_DBufferString);
-            //将设定的参数值写入到指定的buffer
-            writer.WriteLine();
-            //刷新缓存
-            writer.Flush();
-            //关闭流
-            writer.Close();
-            //导入数据
-            IfAdd(MainWindow.S_selected_buffer, MainWindow.S_PageA_String);
-        }
-
-        private void IfAdd(int buffernum, string s)
-        {
-
-            //倒回buffer
-            WriteBuffer();
-            //再清除响应的BUFFER
-            if (m_chanel.GetBufferLines(buffernum) != 0)
-            {
-                DialogResult result = (DialogResult)System.Windows.MessageBox.Show($"所选择的Buffer存在{m_chanel.GetBufferLines(buffernum)}行程序，是否清除后导入？", "提示", MessageBoxButton.OKCancel);
-
-                if (result == DialogResult.OK)
-                {
-                    //delete
-                    m_chanel.ClearBuffer(buffernum);
-                    m_chanel.AppendBuffer(buffernum, s);
-                    m_chanel.CompileBuffer(buffernum);
-                }
-            }
-            else
-            {
-                m_chanel.AppendBuffer(buffernum, s);
-                m_chanel.CompileBuffer(buffernum);
-            }
-            System.Windows.MessageBox.Show("写入成功", "程序导入");
-        }
-
-        private void WriteBuffer()
-        {
-            m_chanel.LoadFormFile(MainWindow.m_BackupFileName);
-            m_chanel.CompileBuffer(m_chanel.GetTotalBuffers());
-            for (int i = 0; i < m_chanel.GetTotalBuffers(); i++)
-            {
-                m_chanel.CompileBuffer(i);
-            }
-        }
 
     }
 }

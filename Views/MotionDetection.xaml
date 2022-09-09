@@ -35,8 +35,8 @@
             </Border>
             <WrapPanel VerticalAlignment="Center" Grid.Row="0"  x:Name="dynamicLedWrapPanel"/>
             <ScrollViewer  Grid.Row="1" Name="scrList"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Style="{StaticResource for_scrollviewer}">
-                <!--<WrapPanel  x:Name="Lines_WarpPanel" Margin="0 5 0 5"  Width="{Binding ElementName=wholeBorder, Path=ActualWidth}"/>-->
-                <ListBox ItemsSource="{Binding VarInfos}">
+                <WrapPanel  x:Name="Lines_WarpPanel" Margin="0 5 0 5"  Width="{Binding ElementName=wholeBorder, Path=ActualWidth}"/>
+                <!--<ListBox ItemsSource="{Binding VarInfos}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                                 <Border  Width="298" Height="150" Margin="5" CornerRadius="10" Background="#e8e8e8">
@@ -45,7 +45,9 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
-                                        <!--中文变量名称+变量值-->
+                                        -->
+                <!--中文变量名称+变量值-->
+                <!--
                                         <Grid>
                                             <TextBlock Text="{Binding Axis}"
                                                     Margin="5 5 0 5"
@@ -59,9 +61,13 @@
 
                                         <lvc:CartesianChart Grid.Row="1">
                                             <lvc:CartesianChart.Series>
-                                                <!--设置Series的类型为 Line 类型, 该类型提供了一些折线图的实现-->
+                                                -->
+                <!--设置Series的类型为 Line 类型, 该类型提供了一些折线图的实现-->
+                <!--
                                                 <lvc:LineSeries Values="{Binding LinerDate}" Stroke="#0985d9" DataLabels="True"/>
-                                                <!--阈值-->
+                                                -->
+                <!--阈值-->
+                <!--
                                                 <lvc:LineSeries Values="{Binding LinerThresholdDate}" Stroke="Red" DataLabels="False"/>
                                             </lvc:CartesianChart.Series>
                                         </lvc:CartesianChart>
@@ -76,7 +82,7 @@
                             </ScrollViewer>
                         </ControlTemplate>
                     </ListBox.Template>
-                </ListBox>
+                </ListBox>-->
             </ScrollViewer>
             <UniformGrid Columns="4" Grid.Row="2" Margin="2">
                 <TextBox Style="{StaticResource WarkTextBoxStyle}" Tag="输入变量名中文" Margin="5" x:Name="cNameTextbox"/>

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media;
 using ACS.SPiiPlusNET;
 using DPM_Utility.Views;
@@ -17,7 +19,7 @@ namespace DPM_Utility
         public static int m_TotalAxes;
         public static int m_TotalBuffers;
 
-        private bool ACS_Connected;
+        private bool ACS_Connected=false;
 
         private bool states_dec;
         private bool led_dec;
@@ -98,7 +100,7 @@ namespace DPM_Utility
             {
                 if (!states_dec)
                 {
-                    Application.Current.Dispatcher.Invoke(() =>
+                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         MainWindow.show.Show("曲线所需变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"),5);
                     });
@@ -121,7 +123,7 @@ namespace DPM_Utility
             {
                 if (!led_dec)
                 {
-                    Application.Current.Dispatcher.Invoke(() =>
+                    System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
                         MainWindow.show.Show("LED变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"),5);
                     });
@@ -175,6 +177,83 @@ namespace DPM_Utility
         public void AppendBuffer(int buffernum,string code)
         {
             m_com.AppendBuffer((ProgramBuffer)buffernum, code);
+        }
+
+
+        private void UploadBuffer()
+        {
+            //需要将程序上载，并保存在TXT中防止软件崩溃
+
+            for (int i = 0; i < GetTotalBuffers(); i++)
+            {
+                if (!string.IsNullOrEmpty(GetBufferString(i)))
+                {
+                    MainWindow.S_AllBufferString += $"#{i}\n{GetBufferString(i)}";
+                }
+            }
+            if (!string.IsNullOrEmpty(MainWindow.S_PageD_String))
+            {
+                if (!GetBufferString(GetTotalBuffers()).Contains(MainWindow.S_StructName))
+                {
+                    MainWindow.S_DBufferString = $"#A\n{GetBufferString(GetTotalBuffers())}\n!DPM Test\n{MainWindow.S_PageD_String}";
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("请按照步骤操作", "参数设定提示");
+            }
+            SaveBufferToFile();
+        }
+
+        private void SaveBufferToFile()
+        {
+            StreamWriter writer = new StreamWriter(MainWindow.m_BackupFileName);
+            writer.WriteLine(MainWindow.S_AllBufferString);
+            writer.WriteLine(MainWindow.S_DBufferString);
+            //将设定的参数值写入到指定的buffer
+            writer.WriteLine();
+            //刷新缓存
+            writer.Flush();
+            //关闭流
+            writer.Close();
+            //导入数据
+            IfAdd(MainWindow.S_selected_buffer, MainWindow.S_PageA_String);
+        }
+
+        private void IfAdd(int buffernum, string s)
+        {
+
+            //倒回buffer
+            WriteBuffer();
+            //再清除响应的BUFFER
+            if (GetBufferLines(buffernum) != 0)
+            {
+                DialogResult result = (DialogResult)System.Windows.MessageBox.Show($"所选择的Buffer存在{GetBufferLines(buffernum)}行程序，是否清除后导入？", "提示", MessageBoxButton.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    //delete
+                    ClearBuffer(buffernum);
+                    AppendBuffer(buffernum, s);
+                    CompileBuffer(buffernum);
+                }
+            }
+            else
+            {
+                AppendBuffer(buffernum, s);
+                CompileBuffer(buffernum);
+            }
+            System.Windows.MessageBox.Show("写入成功", "程序导入");
+        }
+
+        private void WriteBuffer()
+        {
+            //LoadFormFile(MainWindow.m_BackupFileName);
+            //m_com.CompileBuffer(GetTotalBuffers());
+            //for (int i = 0; i < GetTotalBuffers(); i++)
+            //{
+            //    m_com.CompileBuffer(i);
+            //}
         }
     }
 }
