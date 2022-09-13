@@ -34,10 +34,14 @@ namespace DPM_Utility.Views
         //绘制曲线
         public List<SeriesCollection> seriesCollection { get; set; }
         public List<string> Labels { get; set; }
+        //曲线的LIST
         public List<string> MonitorVar { get; set; }
         public List<string> MonitorMean { get; set; }
         public List<int> MonitorIndex { get; set; }
-
+        //
+        public List<string> LedVar { get; set; }
+        public List<string> LedMean { get; set; }
+        public List<int> LedIndex { get; set; }
         public List<string> UserDefineVar { get; set; }
         public List<string> UserDefineMean { get; set; }
         public List<int> UserDefineIndex { get; set; }
@@ -49,7 +53,7 @@ namespace DPM_Utility.Views
 
         private int TotalAxis = 0;
 
-        ACSMotionControl m_chanel = new ACSMotionControl();
+        ACSMotionControl m_com = new ACSMotionControl();
 
         public MotionDetection()
         {
@@ -62,17 +66,19 @@ namespace DPM_Utility.Views
             MonitorMean = new List<string>();
             MonitorIndex = new List<int>();
 
+            LedVar = new List<string>();
+            LedMean = new List<string>();
+            LedIndex = new List<int>();
+
             UserDefineVar = new List<string>();
             UserDefineMean = new List<string>();
             UserDefineIndex = new List<int>();
 
             TempStandardVar = new string[StandardVar.Length];
-            TempStandardMean = new string[StandardMean.Length];
+            TempStandardMean = new string[stateLED.Length];
 
 
         }
-
-
         public void linestart(List<string> var, List<int> index)
         {
             //获取当前一共多少个变量
@@ -83,10 +89,7 @@ namespace DPM_Utility.Views
                 while (true)
                 {
                     Thread.Sleep(100);
-
-                    Array.Copy(m_chanel.GetDPMValue(_trend.Length, var, index), _trend, _trend.Length);
-
-
+                    Array.Copy(m_com.GetDPMValue(_trend.Length, var, index), _trend, _trend.Length);
                     //通过Dispatcher在工作线程中更新窗体的UI元素
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -110,11 +113,23 @@ namespace DPM_Utility.Views
             //通过Dispatcher在工作线程中更新窗体的UI元素
             Application.Current.Dispatcher.Invoke(() =>
             {
-                if ((_trend[5] > MainWindow.S_Threshold) && MainWindow.M_IsFaultHappend)
+                for (int j = 0; j < MainWindow.S_Threshold.Length; j++)
                 {
-                    MainWindow.show.Show($"最大值超过设定值，当前最大值为{String.Format("{0:N3}", _trend[5])}", $"超限报警 {DateTime.Now}", (Brush)new BrushConverter().ConvertFrom("#f50057"), 86400);
-                    MainWindow.M_IsFaultHappend = false;
+                    for (int i = 0; i < _trend.Length; i++)
+                    {
+                        if (MonitorMean[i].Contains("样本峰值"))
+                        {
+                            if ((_trend[i] > double.Parse(MainWindow.S_Threshold[j])) && MainWindow.M_IsFaultHappend)
+                            {
+                                MainWindow.show.Show($"{StandardMean[i]}超过设定值，当前最大值为{String.Format("{0:F6}", _trend[i])}", $"超限报警 {DateTime.Now}", (Brush)new BrushConverter().ConvertFrom("#f50057"), 86400);
+                                MainWindow.M_IsFaultHappend = false;
+                            }
+                        }
+
+                    }
                 }
+
+
             });
         }
         private void UpdateValue(UIElementCollection uiControls)
@@ -128,7 +143,7 @@ namespace DPM_Utility.Views
                     {
                         if (current.Name == MonitorMean[i])
                         {
-                            current.Text = String.Format("{0:N3}", _trend[i]);
+                            current.Text = String.Format("{0:F6}", _trend[i]);
                         }
                     }
                 }
@@ -152,15 +167,15 @@ namespace DPM_Utility.Views
 
             }
         }
-        public void Ledstart(string[] lednamestr)
+        public void Ledstart(List <string> ledList,List<int>index)
         {
-            _led = new double[lednamestr.Length];
+            _led = new double[ledList.Count];
             Task.Run(() =>
             {
                 while (true)
                 {
                     Thread.Sleep(1000);
-                    Array.Copy(m_chanel.GetLedValue(_led.Length, lednamestr), _led, _led.Length);
+                    Array.Copy(m_com.GetLedValue(_led.Length, ledList, index), _led, _led.Length);
                     //通过Dispatcher在工作线程中更新窗体的UI元素
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -204,8 +219,8 @@ namespace DPM_Utility.Views
             SeriesCollection series;
             //添加曲线时不能存在  . 
             //将标准函数里面的变量加进List中
-            StandardListInit(StandardVar, StandardMean);
-
+            LinesListInit(StandardVar, StandardMean);
+            LedListInit(stateLED, stateLedTooltpis);
             //先清除
             Lines_WarpPanel.Children.Clear();
             seriesCollection.Clear();
@@ -219,25 +234,30 @@ namespace DPM_Utility.Views
             //动态生成曲线
             DynamicAddLines(MonitorVar, MonitorMean);
             //动态生成Led
-            DynamicAddLed(stateLED);
+            DynamicAddLed(LedVar,LedMean);
 
             //循环加载名称 .
-            for (int i = 0; i < StandardVar.Length; i++)
+            for (int i = 0; i < MainWindow.S_StructName.Length; i++)
             {
-                TempStandardVar[i] = MainWindow.S_StructName + "." + StandardVar[i];
+                for (int j = 0; j < StandardVar.Length; j++)
+                {
+                    TempStandardVar[j] = MainWindow.S_StructName[i] + "." + StandardVar[j];
+                }
             }
-
-            for (int i = 0; i < stateLED.Length; i++)
+            for (int i = 0; i < MainWindow.S_MotionStructName.Length; i++)
             {
-                TempStandardMean[i] = MainWindow.S_MotionStructName + "." + stateLED[i];
+                for (int j = 0; j < stateLED.Length; j++)
+                {
+                    TempStandardMean[j] = MainWindow.S_MotionStructName[i] + "." + stateLED[j];
+                }
             }
 
             linestart(MonitorVar, MonitorIndex);
-            Ledstart(stateLED);
+            Ledstart(LedVar,LedIndex);
         }
-        private void DynamicAddLed(string[] ledStr)
+        private void DynamicAddLed(List<string> ledStr,List<string>meanStr)
         {
-            for (int i = 0; i < stateLED.Length; i++)
+            for (int i = 0; i < ledStr.Count; i++)
             {
                 Border border = new Border();
                 border.Background = (Brush)new BrushConverter().ConvertFrom("#bec2bc");
@@ -245,20 +265,22 @@ namespace DPM_Utility.Views
                 border.Height = 25;
                 border.CornerRadius = new CornerRadius(12.5);
                 border.Margin = new Thickness(5);
-                border.Name = stateLED[i];
-                border.ToolTip = stateLedTooltpis[i];
+                border.Name = meanStr[i];
+                border.ToolTip = meanStr[i];
                 border.Tag = i;
 
                 //设定显示值
+                int axis = 0;
+                double index = (double)i/stateLED.Length-1>0?axis++:0;
                 TextBlock textBlock = new TextBlock();
-                textBlock.Text = MainWindow.S_selected_axis.ToString();
+                textBlock.Text = MainWindow.S_selected_axis[axis].ToString();
                 textBlock.HorizontalAlignment = HorizontalAlignment.Center;
                 textBlock.VerticalAlignment = VerticalAlignment.Center;
                 textBlock.Foreground = (Brush)new BrushConverter().ConvertFrom("#0073bd");
                 textBlock.FontWeight = FontWeights.Bold;
                 textBlock.Opacity = 0;
-                textBlock.Name = stateLED[i];
-                if (border.Name == stateLED[stateLED.Length - 1])
+                textBlock.Name = meanStr[i];
+                if (border.Name.Contains("选定轴号"))
                 {
                     textBlock.Opacity = 1;
                 }
@@ -266,7 +288,6 @@ namespace DPM_Utility.Views
 
                 States_WarpPanel.Children.Add(border);
             }
-
         }
         private void DynamicAddLines(List<string> var, List<string> mean)
         {
@@ -301,16 +322,20 @@ namespace DPM_Utility.Views
                 textBlock1.VerticalAlignment = VerticalAlignment.Center;
                 textBlock1.HorizontalAlignment = HorizontalAlignment.Right;
                 //设置textblock所处位置
-
+                //设定阈值
                 double[] threshold = new double[8];
-                for (int j = 0; j < threshold.Length; j++)
+                for (int m = 0; m < MainWindow.S_Threshold.Length; m++)
                 {
-                    threshold[j] = MainWindow.S_Threshold;
+                    for (int j = 0; j < threshold.Length; j++)
+                    {
+                        threshold[j] = double.Parse(MainWindow.S_Threshold[m]);
+                    }
                 }
-
                 Labels = new List<string> { "0", "0", "0", "0", "0", "0", "0", "0" };
 
-                seriesCollection[i] = new SeriesCollection {
+                if (var[i].Contains("peak_value"))
+                {
+                    seriesCollection[i] = new SeriesCollection {
                         new LineSeries
                         {
                             Title = mean[i],
@@ -327,6 +352,20 @@ namespace DPM_Utility.Views
                             Values = new ChartValues<double> (threshold)
                         }
                     };
+                }
+                else
+                {
+                    seriesCollection[i] = new SeriesCollection {
+                        new LineSeries
+                        {
+                            Title = mean[i],
+                            LineSmoothness = 1,
+                            PointGeometry = null,
+                            Values = new ChartValues<double> (temp)
+                        }
+                    };
+                }
+
 
                 grid.Children.Add(textBlock);
                 grid.Children.Add(textBlock1);
@@ -342,7 +381,25 @@ namespace DPM_Utility.Views
                 Lines_WarpPanel.Children.Add(border);
             }
         }
-        private void StandardListInit(string[] varstr, string[] meanstr)
+        private void LedListInit(string[] ledVarStr,string[] meanStr)
+        {
+            //按照轴数来实现多个轴变量的添加
+            TotalAxis = CreatBuffer.AxisCount;
+            for (int i = 0; i < TotalAxis; i++)
+            {
+                for (int j = 0; j < ledVarStr.Length; j++)
+                {
+                    LedVar.Add($"{MainWindow.S_MotionStructName[i]}.{ledVarStr[j]}");
+                }
+                string axismean = CreatBuffer.TestAxis[i];
+                for (int j = 0; j < ledVarStr.Length; j++)
+                {
+                    LedMean.Add($"{meanStr[j]}_{axismean}");
+                    LedIndex.Add(-1);
+                }
+            }
+        }
+        private void LinesListInit(string[] varStr, string[] meanStr)
         {
 
             //按照轴数来实现多个轴变量的添加
@@ -351,14 +408,14 @@ namespace DPM_Utility.Views
             for (int i = 0; i < TotalAxis; i++)
             {
                 string axisstr = CreatBuffer.TestAxis[i];
-                for (int j = 0; j < varstr.Length; j++)
+                for (int j = 0; j < varStr.Length; j++)
                 {
-                    MonitorVar.Add($"{varstr[j]}_{axisstr}");
+                    MonitorVar.Add($"{MainWindow.S_StructName[i]}.{varStr[j]}");
                 }
                 string axismean = CreatBuffer.TestAxis[i];
-                for (int j = 0; j < varstr.Length; j++)
+                for (int j = 0; j < varStr.Length; j++)
                 {
-                    MonitorMean.Add($"{meanstr[j]}_{axismean}");
+                    MonitorMean.Add($"{meanStr[j]}_{axismean}");
                     MonitorIndex.Add(-1);
                 }
             }
@@ -374,15 +431,11 @@ namespace DPM_Utility.Views
                 return;
             }
 
-
-
             //先清除
             seriesCollection.Clear();
             MonitorVar.Clear();
             MonitorMean.Clear();
             MonitorIndex.Clear();
-
-
 
             UserDefineVar.Add(this.eNameTextbox.Text);
             UserDefineMean.Add(this.cNameTextbox.Text);
@@ -394,7 +447,7 @@ namespace DPM_Utility.Views
                 MonitorIndex.Add(UserDefineIndex[j]);
             }
             //将标准变量加入LIST
-            StandardListInit(StandardVar, StandardMean);
+            LinesListInit(StandardVar, StandardMean);
 
 
             SeriesCollection series;
@@ -415,8 +468,6 @@ namespace DPM_Utility.Views
             MonitorMean.Clear();
             MonitorIndex.Clear();
 
-
-
             for (int j = UserDefineVar.Count - 1; j >= 0; j--)
             {
                 MonitorVar.Add(UserDefineVar[j]);
@@ -424,11 +475,9 @@ namespace DPM_Utility.Views
                 MonitorIndex.Add(UserDefineIndex[j]);
             }
             //将结构体加名称加入LIST
-            StandardListInit(TempStandardVar, TempStandardMean);
+            LinesListInit(TempStandardVar, TempStandardMean);
             //循环扫描
             linestart(MonitorVar, MonitorIndex);
-
-
         }
     }
 }

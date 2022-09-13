@@ -112,6 +112,8 @@ namespace DPM_Utility
         private StringBuilder[] DynamicCreatbuffer()
         {
             StringBuilder[] builders = new StringBuilder[2];
+            MainWindow.S_StructName = new string[TestAxis.Length];
+            MainWindow.S_MotionStructName = new string[TestAxis.Length];
             //******************************************************************
             //D-BUFFER里面的程序部分
             StringBuilder D_s =new StringBuilder();
@@ -119,6 +121,8 @@ namespace DPM_Utility
             //DPM结构体名称
             for (int i = 0; i < TestAxis.Length; i++)
             {
+                //将结构体名称保存至MainWindow，用于判断是否需要重复添加
+                MainWindow.S_StructName[i] = $"{TestItem}_{TestAxis[i]}";
                 ss += $"{TestItem}_{TestAxis[i]},";
             }
             ss = ss.Remove(ss.LastIndexOf(','), 1);
@@ -129,7 +133,8 @@ namespace DPM_Utility
             {
                 for (int i = 0; i < TestAxis.Length; i++)
                 {
-                ss += $"Motion_status_{TestAxis[i]},";
+                    MainWindow.S_MotionStructName[i]= $"Motion_status_{TestAxis[i]}";
+                    ss += $"Motion_status_{TestAxis[i]},";
                 }
                 ss = ss.Remove(ss.LastIndexOf(','), 1);
             }
@@ -266,10 +271,12 @@ namespace DPM_Utility
 
         private void TestAxisFunc(string v)
         {
+            
             if (!string.IsNullOrEmpty(v))
             { 
                 TestAxis = v.Trim().Split(' ');
                 AxisCount=TestAxis.Length;
+                MainWindow.S_selected_axis = new int[AxisCount];
                 for (int i = 0; i < TestAxis.Length; i++)
                 {
                     for (int j = i+1; j < TestAxis.Length; j++)
@@ -282,6 +289,7 @@ namespace DPM_Utility
                             });
                         }
                     }
+                    MainWindow.S_selected_axis[i] = int.Parse(TestAxis[i]);
                 }
             }
 
@@ -330,11 +338,14 @@ namespace DPM_Utility
                     TestThreshold[i] = "0";
                 }
             }
+            MainWindow.S_Threshold =TestThreshold;
         }
 
         private void TestBufferFunc(string v)
         {
             if(!string.IsNullOrEmpty(v)) TestBuffer = v.Trim(); else { TestBuffer = "0"; }
+            //测试程序保存位置
+            MainWindow.S_selected_buffer = int.Parse(TestBuffer);
         }
 
         private void DriveCurrentFunc(string v)

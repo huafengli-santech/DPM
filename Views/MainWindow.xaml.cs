@@ -21,7 +21,7 @@ namespace DPM_Utility.Views
 
         //全局变量值
         public static string IP;
-        public static int S_selected_axis;
+        public static int[] S_selected_axis;
         public static int S_selected_buffer;
 
         public static ShowMessage show = new ShowMessage();
@@ -30,18 +30,17 @@ namespace DPM_Utility.Views
         public static CreatBuffer creatbuffer = new CreatBuffer();
 
         //Paged
-        public static string S_StructName;
-        public static string S_MotionStructName;
+        public static string[] S_StructName;
+        public static string[] S_MotionStructName;
         public static string S_ThresholdName;
-        public static double S_Threshold;
+        public static string[] S_Threshold;
         public static int S_TestItems;
         public static double S_TIME;
 
-        public static string S_AllBufferString;
-        public static string S_DBufferString;
-        public static string S_PageD_String;
-        public static string S_PageA_String;
-        public static string S_PageB_String;
+        public static string S_AllBufferString;//最终上载上来的所有buffer
+        public static string S_DBufferString;//最终写入到D-Buffer内的字符串
+        public static string S_DpmD_String;//生成的D-Buffer内的字符串
+        public static string S_DpmO_String;//生成的其他Buffre内的字符串
 
 
         //系统启动项目根目录下   Ini配置文件

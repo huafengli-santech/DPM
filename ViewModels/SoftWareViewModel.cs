@@ -181,8 +181,6 @@ namespace DPM_Utility.ViewModels
 
             //将数据添加进指定buffer中
             acs.AppendBuffer(buffernum, builder[1].ToString());
-            //直接编译D-BUFFER即可
-            //acs.CompileBuffer(m_totalBufferNum);
 
         }
 

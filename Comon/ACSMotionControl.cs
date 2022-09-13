@@ -19,7 +19,7 @@ namespace DPM_Utility
         public static int m_TotalAxes;
         public static int m_TotalBuffers;
 
-        private bool ACS_Connected=false;
+        private bool ACS_Connected = false;
 
         private bool states_dec;
         private bool led_dec;
@@ -79,20 +79,20 @@ namespace DPM_Utility
             ACS_Connected = false;
         }
 
-        public double [] GetDPMValue(int arraySize,List<string> var, List<int> index)
+        public double[] GetDPMValue(int arraySize, List<string> var, List<int> index)
         {
             double[] p = new double[arraySize];
             try
             {
-                    for (int i = 0; i < var.Count; i++)
-                    {
-                    if (index[i]==-1)
+                for (int i = 0; i < var.Count; i++)
+                {
+                    if (index[i] == -1)
                     {
                         p[i] = Convert.ToDouble(m_com.ReadVariable(var[i]));
                     }
                     else
                     {
-                        p[i] = Convert.ToDouble(m_com.ReadVariable(var[i],ProgramBuffer.ACSC_NONE,index[i],index[i]));
+                        p[i] = Convert.ToDouble(m_com.ReadVariable(var[i], ProgramBuffer.ACSC_NONE, index[i], index[i]));
                     }
                 }
             }
@@ -102,21 +102,21 @@ namespace DPM_Utility
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
-                        MainWindow.show.Show("曲线所需变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"),5);
+                        MainWindow.show.Show("曲线所需变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 5);
                     });
                 }
                 states_dec = true;
             }
             return p;
         }
-        public int[] GetLedValue(int arraySize, string[] varnames)
+        public int[] GetLedValue(int arraySize, List<string> var, List<int> index)
         {
             int[] p = new int[arraySize];
             try
             {
-                for (int i = 0; i < varnames.Length; i++)
+                for (int i = 0; i < var.Count; i++)
                 {
-                    p[i] = (int)m_com.ReadVariable(varnames[i]);
+                    p[i] = (int)m_com.ReadVariable(var[i]);
                 }
             }
             catch (ACSException)
@@ -125,7 +125,7 @@ namespace DPM_Utility
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(() =>
                     {
-                        MainWindow.show.Show("LED变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"),5);
+                        MainWindow.show.Show("LED变量不存在，停止查询，默认为0", "ACS查询错误", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 5);
                     });
                 }
                 led_dec = true;
@@ -157,7 +157,7 @@ namespace DPM_Utility
             {
                 m_com.CompileBuffer((ProgramBuffer)buffernum);
             }
-            catch 
+            catch
             {
 
             }
@@ -166,21 +166,21 @@ namespace DPM_Utility
         public int GetBufferLines(int buffernum)
         {
             int lines = 0;
-            lines = (int)m_com.ReadVariable("PLINES", ProgramBuffer.ACSC_NONE,buffernum,buffernum);
+            lines = (int)m_com.ReadVariable("PLINES", ProgramBuffer.ACSC_NONE, buffernum, buffernum);
             return lines;
         }
 
         public void ClearBuffer(int buffernum)
         {
-            m_com.ClearBuffer((ProgramBuffer)buffernum,1, GetBufferLines(buffernum));
+            m_com.ClearBuffer((ProgramBuffer)buffernum, 1, GetBufferLines(buffernum));
         }
-        public void AppendBuffer(int buffernum,string code)
+        public void AppendBuffer(int buffernum, string code)
         {
             m_com.AppendBuffer((ProgramBuffer)buffernum, code);
         }
 
 
-        private void UploadBuffer()
+        public void UploadBuffer()
         {
             //需要将程序上载，并保存在TXT中防止软件崩溃
 
@@ -191,16 +191,13 @@ namespace DPM_Utility
                     MainWindow.S_AllBufferString += $"#{i}\n{GetBufferString(i)}";
                 }
             }
-            if (!string.IsNullOrEmpty(MainWindow.S_PageD_String))
+            if (!string.IsNullOrEmpty(MainWindow.S_DpmD_String))
             {
-                if (!GetBufferString(GetTotalBuffers()).Contains(MainWindow.S_StructName))
+                //判断D-BUFFER里面有没有包含DPM程序
+                if (!GetBufferString(GetTotalBuffers()).Contains("DPM_Measurement"))
                 {
-                    MainWindow.S_DBufferString = $"#A\n{GetBufferString(GetTotalBuffers())}\n!DPM Test\n{MainWindow.S_PageD_String}";
+                    MainWindow.S_DBufferString = $"#A\n{GetBufferString(GetTotalBuffers())}\n!DPM Test\n{MainWindow.S_DpmD_String}";
                 }
-            }
-            else
-            {
-                System.Windows.MessageBox.Show("请按照步骤操作", "参数设定提示");
             }
             SaveBufferToFile();
         }
@@ -217,7 +214,7 @@ namespace DPM_Utility
             //关闭流
             writer.Close();
             //导入数据
-            IfAdd(MainWindow.S_selected_buffer, MainWindow.S_PageA_String);
+            IfAdd(MainWindow.S_selected_buffer, MainWindow.S_DpmO_String);
         }
 
         private void IfAdd(int buffernum, string s)
@@ -248,12 +245,12 @@ namespace DPM_Utility
 
         private void WriteBuffer()
         {
-            //LoadFormFile(MainWindow.m_BackupFileName);
-            //m_com.CompileBuffer(GetTotalBuffers());
-            //for (int i = 0; i < GetTotalBuffers(); i++)
-            //{
-            //    m_com.CompileBuffer(i);
-            //}
+            LoadFormFile(MainWindow.m_BackupFileName);
+            CompileBuffer(GetTotalBuffers());
+            for (int i = 0; i < GetTotalBuffers(); i++)
+            {
+                CompileBuffer(i);
+            }
         }
     }
 }

@@ -149,12 +149,11 @@ namespace DPM_Utility.Views
                 builders = MainWindow.creatbuffer.GetBuffer(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
                 int.TryParse(CreatBuffer.TestBuffer, out int buffernum);
                 //将数据添加进D-BUFFER中
-                m_com.AppendBuffer(m_com.GetTotalBuffers(), builders[0].ToString());
+                MainWindow.S_DpmD_String = builders[0].ToString();
 
-                //将数据添加进指定buffer中
-                m_com.AppendBuffer(buffernum, builders[1].ToString());
-                //直接编译D-BUFFER即可
-                //acs.CompileBuffer(m_totalBufferNum);
+                //将数据添加进指定Buffer中
+                MainWindow.S_DpmO_String = builders[1].ToString();
+                m_com.UploadBuffer();
             }
 
         }
