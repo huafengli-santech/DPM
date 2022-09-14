@@ -28,6 +28,7 @@ namespace DPM_Utility
             dialog.DataContext = data;//设置通知里要显示的数据
             dialog.Show();
         }
+
         private void Dialog_Closed(object sender, EventArgs e)
         {
             var closedDialog = sender as NotificationWindow;

@@ -18,7 +18,7 @@ namespace DPM_Utility.ViewModels
     public class MainWindowViewModel:InotifyBase
     {
         public ObservableCollection<string> ListButtonSource { get; set; } = new ObservableCollection<string>();
-        private string[] ListButtonName = { "参数配置", "状态检测" };
+        private string[] ListButtonName = { "参数配置", "状态检测","历史曲线" };
 
         //关闭、最小、最大按钮
         public IcommandBase MaxFormCommand { get; set; }
@@ -102,6 +102,9 @@ namespace DPM_Utility.ViewModels
                     break;
                 case 1:
                     MainContent = new MotionDetection();
+                    break;
+                case 2:
+                    MainContent = new HistoryMonitor(MainWindow.S_selected_axis);
                     break;
                 default:
                     break;

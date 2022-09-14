@@ -81,9 +81,13 @@
     <Compile Include="UserControls\Buffer.xaml.cs" />
     <Compile Include="UserControls\HelpPng.xaml.cs" />
     <Compile Include="ViewModels\AddVarsViewModel.cs" />
+    <Compile Include="ViewModels\HistoryMonitorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SoftWareViewModel.cs" />
     <Compile Include="Views\DpmParameter.xaml.cs" />
+    <Compile Include="Views\HistoryMonitor.xaml.cs">
+      <DependentUpon>HistoryMonitor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs" />
     <Compile Include="Views\MotionDetection.xaml.cs" />
     <Compile Include="Views\NotificationWindow.xaml.cs" />
@@ -141,6 +145,10 @@
     <Page Include="Views\DpmParameter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HistoryMonitor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

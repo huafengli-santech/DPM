@@ -134,3 +134,5 @@ D:\GitHubPro\DPM\obj\Debug\DPM Utility.csproj.CoreCompileInputs.cache
 D:\GitHubPro\DPM\obj\Debug\DPM Utility.csproj.CopyComplete
 D:\GitHubPro\DPM\obj\Debug\DPM Utility.exe
 D:\GitHubPro\DPM\obj\Debug\DPM Utility.pdb
+D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.g.cs
+D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.baml

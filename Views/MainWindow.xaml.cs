@@ -43,11 +43,14 @@ namespace DPM_Utility.Views
         public static string S_DpmO_String;//生成的其他Buffre内的字符串
 
 
+
+
         //系统启动项目根目录下   Ini配置文件
         public static string m_IniPath = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup";
         public static string m_IniFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\setup.ini";
         public static string m_ParaFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\parameters.ini";
         public static string m_BackupFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Backup.prg";
+        public static string m_LogFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Log.prg";
         public static INI iniFile = new INI(m_IniFileName);
         public static INI paramFile = new INI(m_ParaFileName);
 

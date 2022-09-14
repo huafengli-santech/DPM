@@ -18,6 +18,8 @@ namespace DPM_Utility
         private static Api m_com = new Api();
         public static int m_TotalAxes;
         public static int m_TotalBuffers;
+        //获取软件启动时的时间
+        private static DateTime m_StartTime = DateTime.Now;
 
         private bool ACS_Connected = false;
 
@@ -79,6 +81,42 @@ namespace DPM_Utility
             ACS_Connected = false;
         }
 
+        //保存DPM数据至一个文件中
+        private void SaveLog(double[] code)
+        {
+            if (CompareTime(m_StartTime, DateTime.Now))
+            {
+                //此处的true表示如果存在，则会在后面追加
+                using (StreamWriter sw = new StreamWriter(MainWindow.m_LogFileName, true))
+                {
+                    string date = "";
+                    for (int i = 0; i < code.Length; i++)
+                    {
+                        date+=$"{code[i]}\t";
+                    }
+                    sw.WriteLine($"{DateTime.Now}:{date}");
+                }
+                m_StartTime = DateTime.Now;
+            }
+        }
+        /// <summary>
+        /// 比较是否距离上次已经达到1分钟
+        /// </summary>
+        /// <param name="preTime">上次时间</param>
+        /// <param name="NowTime">当前时间</param>
+        /// <returns></returns>
+        private bool CompareTime(DateTime preTime, DateTime NowTime)
+        {
+            bool flags = false;
+            var pretime = preTime.Ticks / 600000000;
+            var aftertime = NowTime.Ticks / 600000000;
+            if (pretime <= (aftertime - 1))
+            {
+                flags = true;
+            }
+            return flags;
+        }
+
         public double[] GetDPMValue(int arraySize, List<string> var, List<int> index)
         {
             double[] p = new double[arraySize];
@@ -94,6 +132,7 @@ namespace DPM_Utility
                     {
                         p[i] = Convert.ToDouble(m_com.ReadVariable(var[i], ProgramBuffer.ACSC_NONE, index[i], index[i]));
                     }
+                    SaveLog(p);
                 }
             }
             catch
