@@ -50,7 +50,7 @@ namespace DPM_Utility.Views
         public static string m_IniFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\setup.ini";
         public static string m_ParaFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\parameters.ini";
         public static string m_BackupFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Backup.prg";
-        public static string m_LogFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Log.prg";
+        public static string m_LogFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Log.log";
         public static INI iniFile = new INI(m_IniFileName);
         public static INI paramFile = new INI(m_ParaFileName);
 
@@ -92,8 +92,6 @@ namespace DPM_Utility.Views
             ConInit();
 
         }
-
-
         private void IniInit()
         {
             if (!File.Exists(m_IniFileName))
@@ -108,11 +106,11 @@ namespace DPM_Utility.Views
             try
             {
                 m_chanel.Connect(IP, 701);
-                MainWindow.show.Show("Connect success", "连接提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
+                MainWindow.show.Show("连接成功", "连接提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
             }
             catch
             {
-
+                MainWindow.show.Show("连接失败，请重试", "连接提示", (Brush)new BrushConverter().ConvertFrom("#f50057"), 5);
             }
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

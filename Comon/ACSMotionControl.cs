@@ -94,7 +94,7 @@ namespace DPM_Utility
                     {
                         date+=$"{code[i]}\t";
                     }
-                    sw.WriteLine($"{DateTime.Now}:{date}");
+                    sw.WriteLine($"{DateTime.Now}-{date}");
                 }
                 m_StartTime = DateTime.Now;
             }

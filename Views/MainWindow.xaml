@@ -8,7 +8,10 @@
         mc:Ignorable="d" x:Name="wholeWindow"
         Title="DPM Monitor" Height="450" Width="800" Topmost="False" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="True">
 
-    <Border Background="#ffffff" CornerRadius="10" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Background="#ffffff" CornerRadius="10" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="2">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" ShadowDepth="0" Direction="0" Color="Gray" Opacity="0.5"/>
+        </Border.Effect>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
