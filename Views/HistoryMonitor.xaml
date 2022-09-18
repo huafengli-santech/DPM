@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DPM_Utility.Views"
+             xmlns:Controls="clr-namespace:DPM_Utility.Controls"
              mc:Ignorable="d" 
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
             d:DesignHeight="360" d:DesignWidth="616" Background="Transparent">
@@ -19,6 +20,11 @@
                     <ComboBox      Grid.Column="1"  Style="{StaticResource cmbstyle}" SelectedIndex="{Binding AxisIndex}" ItemsSource="{Binding Axis}" MinWidth="100"/>
                     <TextBlock Text="监控变量:" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
                     <ComboBox      Grid.Column="1"  Style="{StaticResource cmbstyle}" SelectedIndex="{Binding VarsIndex}" ItemsSource="{Binding Vars}" MinWidth="100"/>
+                    <Controls:IconButton Margin="5 0"
+                                         Style="{StaticResource IconOnlyButtonStyle}"
+                                         Width="100"
+                                         IconOnlyData="&#xe616; 刷新"
+                                         Command="{Binding RefreshCommand}"/>
                 </StackPanel>
             </Border>
             <lvc:CartesianChart Grid.Row="1" 
@@ -26,11 +32,11 @@
                                 Zoom="X"
                                 Series="{Binding SeriesCollection}"
                                 LegendLocation="Top">
-                <lvc:CartesianChart.AxisY >
+                <!--<lvc:CartesianChart.AxisY >
                     <lvc:Axis></lvc:Axis>
-                </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart.AxisY>-->
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
+                    <lvc:Axis Labels="{Binding Labels}" ></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Grid>

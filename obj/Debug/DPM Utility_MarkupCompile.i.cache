@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\GitCode\DPM\obj\Debug\
+D:\GitHubPro\DPM\obj\Debug\
 DPM_Utility
 none
 false
 DEBUG;TRACE
-D:\GitCode\DPM\App.xaml
+D:\GitHubPro\DPM\App.xaml
 172043446569
 
 281612204127
-17-62488127
+17-486497004
 Styles\CheckRadioButton.xaml;Styles\ComboBoxStyle.xaml;Styles\DateGridStyle.xaml;Styles\IconButtonStyle.xaml;Styles\ListBoxStyle.xaml;Styles\RadioIconButton.xaml;Styles\ScrollviewStyle.xaml;Styles\TextBox.xaml;UserControls\AddVarsHelpWindow.xaml;UserControls\Buffer.xaml;UserControls\HelpPng.xaml;Views\DpmParameter.xaml;Views\HistoryMonitor.xaml;Views\MainWindow.xaml;Views\MotionDetection.xaml;Views\NotificationWindow.xaml;Views\SoftWareSetup.xaml;
 
 True

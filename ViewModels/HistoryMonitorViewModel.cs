@@ -12,6 +12,7 @@ using System.Windows;
 using DPM_Utility.Views;
 using System.Windows.Media;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace DPM_Utility.ViewModels
 {
@@ -66,15 +67,18 @@ namespace DPM_Utility.ViewModels
         public SeriesCollection SeriesCollection
         {
             get { return _seriesCollection; }
-            set { _seriesCollection = value; }
+            set { _seriesCollection = value; DoNotify(); }
         }
 
         public ObservableCollection<string> Labels { get; set; }
         private double _trend;
         private double[] temp;
 
+        public IcommandBase RefreshCommand { get; set; }
+
         public HistoryMonitorViewModel(int[] axis)
         {
+
             Vars = StandardMean;
             Axis = axis;
             GetLogDate();
@@ -87,6 +91,21 @@ namespace DPM_Utility.ViewModels
             {
                 MainWindow.show.Show("轴数或历史记录为空，请开启检测后使用", "曲线显示提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
             }
+            //连接控制器指令
+            RefreshCommand = new IcommandBase();
+            RefreshCommand.DoExeccute = new Action<object>((o) =>
+            {
+                if (axis != null & dateTimeList.Count != 0)
+                {
+                    temp = new double[dateTimeList.Count];
+                    LineInit();
+                }
+                else
+                {
+                    MainWindow.show.Show("轴数或历史记录为空，请开启检测后使用", "曲线显示提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
+                }
+            });
+            RefreshCommand.DoCanExeccute = new Func<object, bool>((o) => true);
         }
 
         public void LineInit()
@@ -143,6 +162,8 @@ namespace DPM_Utility.ViewModels
 
         private void GetLogDate()
         {
+            dateTimeList.Clear();
+            dateList.Clear();
             using (StreamReader reader = new StreamReader(MainWindow.m_LogFileName))
             {
                 while (!reader.EndOfStream)

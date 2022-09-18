@@ -136,3 +136,5 @@ D:\GitHubPro\DPM\obj\Debug\DPM Utility.exe
 D:\GitHubPro\DPM\obj\Debug\DPM Utility.pdb
 D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.g.cs
 D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.baml
+D:\GitHubPro\DPM\obj\Debug\Views\HistoryMonitor.g.cs
+D:\GitHubPro\DPM\obj\Debug\Views\HistoryMonitor.baml
