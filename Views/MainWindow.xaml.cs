@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,10 +16,6 @@ namespace DPM_Utility.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        //左侧的按钮列表---可以动态生成
-        string[] leftButtonList = { "参数设定", "状态检测" };
-        string[] leftButtonList_N = { "setPramButton", "decStateButton" };
-
         //全局变量值
         public static string IP;
         public static int[] S_selected_axis;
@@ -42,9 +39,6 @@ namespace DPM_Utility.Views
         public static string S_DpmD_String;//生成的D-Buffer内的字符串
         public static string S_DpmO_String;//生成的其他Buffre内的字符串
 
-
-
-
         //系统启动项目根目录下   Ini配置文件
         public static string m_IniPath = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup";
         public static string m_IniFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\setup.ini";
@@ -58,12 +52,13 @@ namespace DPM_Utility.Views
         public static List<string> T_DpmParaValue;
 
         //ACS初始化
-        ACSMotionControl m_chanel = new ACSMotionControl();
+        ACSMotionControl m_com = new ACSMotionControl();
 
         MainWindowViewModel model = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+
             //绑定ViewModel
             this.DataContext = model;
 
@@ -105,12 +100,22 @@ namespace DPM_Utility.Views
         {
             try
             {
-                m_chanel.Connect(IP, 701);
-                MainWindow.show.Show("连接成功", "连接提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
+                m_com.Connect(IP, 701);
+                MainWindow.show.Show("连接成功", "连接提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 5);
+                model.IsConnected=true;
             }
             catch
             {
-                MainWindow.show.Show("连接失败，请重试", "连接提示", (Brush)new BrushConverter().ConvertFrom("#f50057"), 5);
+                try
+                {
+                    m_com.Simconnect();
+                    MainWindow.show.Show("连接失败，已自动连接仿真", "连接提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 5);
+                }
+                catch
+                {
+                    MainWindow.show.Show("仿真连接仍然失败，连接失败", "连接提示", (Brush)new BrushConverter().ConvertFrom("#a1ffce"), 5);
+                }
+
             }
         }
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

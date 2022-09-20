@@ -46,7 +46,8 @@
                     <ListBox ItemsSource="{Binding ListButtonSource}" 
                              SelectedIndex="{Binding SelectedIndex}"
                              Grid.Row="1" 
-                             Style="{StaticResource ListboxStyle}"/>
+                             Style="{StaticResource ListboxStyle}">
+                    </ListBox>
                 </Grid>
             </Border>
             <!--关闭、最大、最小化-->

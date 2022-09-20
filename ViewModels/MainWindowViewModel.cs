@@ -1,4 +1,5 @@
 ﻿using DPM_Utility.Base;
+using DPM_Utility.Date;
 using DPM_Utility.Views;
 using System;
 using System.Collections.Generic;
@@ -34,11 +35,28 @@ namespace DPM_Utility.ViewModels
             set { _mainContent = value; DoNotify(); }
         }
 
+        private bool _isconnected;
+
+        public bool IsConnected
+        {
+            get { return _isconnected; }
+            set { _isconnected = value;DoNotify(); }
+        }
+
+
         public MainWindowViewModel()
         {
+            //UI线程未捕获异常处理事件
+            Application.Current.DispatcherUnhandledException += OnDispatcherUnhandledException;
+            //Task线程内未捕获异常处理事件
+            TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
+            //多线程异常
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+
             //默认窗体就是软件设置界面窗体
             MainContent = new DpmParameter();
             //默认未连接状态
+
             //加载列表
             for (int i = 0; i < ListButtonName.Length; i++)
             {
@@ -72,6 +90,29 @@ namespace DPM_Utility.ViewModels
 
         }
 
+
+        #region 报错订阅
+        private void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            //通常全局异常捕捉的都是致命信息
+            MessageBox.Show($"{e.Exception.StackTrace},{e.Exception.Message}", "UI线程异常捕获");
+            //MainWindow.show.Show($"{e.Exception.StackTrace},{e.Exception.Message}", "全局异常捕获", (Brush)new BrushConverter().ConvertFrom("#f50057"), 5);
+        }
+
+        private void OnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            MessageBox.Show($"{e.Exception.StackTrace},{e.Exception.Message}", "Task异常捕获");
+            //MainWindow.show.Show($"{e.Exception.StackTrace},{e.Exception.Message}", "全局异常捕获", (Brush)new BrushConverter().ConvertFrom("#f50057"), 5);
+        }
+
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            MessageBox.Show($"{ex.StackTrace},{ex.Message}", "多线程异常捕获");
+
+            //MainWindow.show.Show($"{ex.StackTrace},{ex.Message}", "全局异常捕获", (Brush)new BrushConverter().ConvertFrom("#f50057"), 5);
+        }
+        #endregion
         private int _selectedIndex;
 
         public int SelectedIndex

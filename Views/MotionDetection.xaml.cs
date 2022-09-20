@@ -235,25 +235,32 @@ namespace DPM_Utility.Views
             DynamicAddLines(MonitorVar, MonitorMean);
             //动态生成Led
             DynamicAddLed(LedVar,LedMean);
-
-            //循环加载名称 .
-            for (int i = 0; i < MainWindow.S_StructName.Length; i++)
+            if (MainWindow.S_StructName!=null|| MainWindow.S_MotionStructName!=null)
             {
-                for (int j = 0; j < StandardVar.Length; j++)
+                //循环加载名称 .
+                for (int i = 0; i < MainWindow.S_StructName.Length; i++)
                 {
-                    TempStandardVar[j] = MainWindow.S_StructName[i] + "." + StandardVar[j];
+                    for (int j = 0; j < StandardVar.Length; j++)
+                    {
+                        TempStandardVar[j] = MainWindow.S_StructName[i] + "." + StandardVar[j];
+                    }
                 }
+                for (int i = 0; i < MainWindow.S_MotionStructName.Length; i++)
+                {
+                    for (int j = 0; j < stateLED.Length; j++)
+                    {
+                        TempStandardMean[j] = MainWindow.S_MotionStructName[i] + "." + stateLED[j];
+                    }
+                }
+
+                linestart(MonitorVar, MonitorIndex);
+                Ledstart(LedVar, LedIndex);
             }
-            for (int i = 0; i < MainWindow.S_MotionStructName.Length; i++)
+            else
             {
-                for (int j = 0; j < stateLED.Length; j++)
-                {
-                    TempStandardMean[j] = MainWindow.S_MotionStructName[i] + "." + stateLED[j];
-                }
+                MainWindow.show.Show("请在主页面刷新，并保存参数后进行检测", "曲线生成错误提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
             }
 
-            linestart(MonitorVar, MonitorIndex);
-            Ledstart(LedVar,LedIndex);
         }
         private void DynamicAddLed(List<string> ledStr,List<string>meanStr)
         {
@@ -321,6 +328,7 @@ namespace DPM_Utility.Views
                 textBlock1.Margin = new Thickness(0, 5, 15, 5);
                 textBlock1.VerticalAlignment = VerticalAlignment.Center;
                 textBlock1.HorizontalAlignment = HorizontalAlignment.Right;
+
                 //设置textblock所处位置
                 //设定阈值
                 double[] threshold = new double[8];

@@ -1,0 +1,49 @@
+D:\GitCode\DPM\obj\Release\DPM Utility.csproj.AssemblyReference.cache
+D:\GitCode\DPM\obj\Release\DPM Utility.csproj.SuggestedBindingRedirects.cache
+D:\GitCode\DPM\obj\Release\Styles\CheckRadioButton.baml
+D:\GitCode\DPM\obj\Release\Styles\ComboBoxStyle.baml
+D:\GitCode\DPM\obj\Release\Styles\DateGridStyle.baml
+D:\GitCode\DPM\obj\Release\Styles\ListBoxStyle.baml
+D:\GitCode\DPM\obj\Release\Styles\RadioIconButton.baml
+D:\GitCode\DPM\obj\Release\Styles\ScrollviewStyle.baml
+D:\GitCode\DPM\obj\Release\Styles\TextBox.baml
+D:\GitCode\DPM\obj\Release\UserControls\AddVarsHelpWindow.g.cs
+D:\GitCode\DPM\obj\Release\UserControls\Buffer.g.cs
+D:\GitCode\DPM\obj\Release\UserControls\HelpPng.g.cs
+D:\GitCode\DPM\obj\Release\Views\DpmParameter.g.cs
+D:\GitCode\DPM\obj\Release\Views\HistoryMonitor.g.cs
+D:\GitCode\DPM\obj\Release\Views\MainWindow.g.cs
+D:\GitCode\DPM\obj\Release\Views\MotionDetection.g.cs
+D:\GitCode\DPM\obj\Release\Views\NotificationWindow.g.cs
+D:\GitCode\DPM\obj\Release\Views\SoftWareSetup.g.cs
+D:\GitCode\DPM\obj\Release\App.g.cs
+D:\GitCode\DPM\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\GitCode\DPM\obj\Release\DPM Utility_MarkupCompile.cache
+D:\GitCode\DPM\obj\Release\DPM Utility_MarkupCompile.lref
+D:\GitCode\DPM\bin\Release\DPM Utility.exe.config
+D:\GitCode\DPM\bin\Release\DPM Utility.exe
+D:\GitCode\DPM\bin\Release\DPM Utility.pdb
+D:\GitCode\DPM\bin\Release\LiveCharts.dll
+D:\GitCode\DPM\bin\Release\LiveCharts.Wpf.dll
+D:\GitCode\DPM\bin\Release\LiveCharts.pdb
+D:\GitCode\DPM\bin\Release\LiveCharts.xml
+D:\GitCode\DPM\bin\Release\LiveCharts.Wpf.pdb
+D:\GitCode\DPM\bin\Release\LiveCharts.Wpf.xml
+D:\GitCode\DPM\obj\Release\App.baml
+D:\GitCode\DPM\obj\Release\Styles\IconButtonStyle.baml
+D:\GitCode\DPM\obj\Release\UserControls\AddVarsHelpWindow.baml
+D:\GitCode\DPM\obj\Release\UserControls\Buffer.baml
+D:\GitCode\DPM\obj\Release\UserControls\HelpPng.baml
+D:\GitCode\DPM\obj\Release\Views\DpmParameter.baml
+D:\GitCode\DPM\obj\Release\Views\HistoryMonitor.baml
+D:\GitCode\DPM\obj\Release\Views\MainWindow.baml
+D:\GitCode\DPM\obj\Release\Views\MotionDetection.baml
+D:\GitCode\DPM\obj\Release\Views\NotificationWindow.baml
+D:\GitCode\DPM\obj\Release\Views\SoftWareSetup.baml
+D:\GitCode\DPM\obj\Release\DPM Utility.g.resources
+D:\GitCode\DPM\obj\Release\DPM_Utility.Properties.Resources.resources
+D:\GitCode\DPM\obj\Release\DPM Utility.csproj.GenerateResource.cache
+D:\GitCode\DPM\obj\Release\DPM Utility.csproj.CoreCompileInputs.cache
+D:\GitCode\DPM\obj\Release\DPM Utility.csproj.CopyComplete
+D:\GitCode\DPM\obj\Release\DPM Utility.exe
+D:\GitCode\DPM\obj\Release\DPM Utility.pdb
