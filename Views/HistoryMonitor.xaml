@@ -16,8 +16,6 @@
             </Grid.RowDefinitions>
             <Border >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="监控轴:" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
-                    <ComboBox      Grid.Column="1"  Style="{StaticResource cmbstyle}" SelectedIndex="{Binding AxisIndex}" ItemsSource="{Binding Axis}" MinWidth="100"/>
                     <TextBlock Text="监控变量:" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
                     <ComboBox      Grid.Column="1"  Style="{StaticResource cmbstyle}" SelectedIndex="{Binding VarsIndex}" ItemsSource="{Binding Vars}" MinWidth="100"/>
                     <Controls:IconButton Margin="5 0"
@@ -31,7 +29,7 @@
                                 Margin="5" 
                                 Zoom="X"
                                 Series="{Binding SeriesCollection}"
-                                LegendLocation="Top">
+                                LegendLocation="None">
                 <!--<lvc:CartesianChart.AxisY >
                     <lvc:Axis></lvc:Axis>
                 </lvc:CartesianChart.AxisY>-->

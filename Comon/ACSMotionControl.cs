@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
 using ACS.SPiiPlusNET;
+using DPM_Utility.Comon;
 using DPM_Utility.Views;
 
 namespace DPM_Utility
@@ -117,8 +118,19 @@ namespace DPM_Utility
             return flags;
         }
 
-        public double[] GetDPMValue(int arraySize, List<string> var, List<int> index)
+        /// <summary>
+        /// 函数：获取曲线当前值
+        /// </summary>
+        /// <param name="arraySize">存储数据数组长度</param>
+        /// <param name="var">变量值</param>
+        /// <param name="index">buffer号、轴号、-1时表示该变量无前两者号码</param>
+        /// <param name="varsMean">变量值对应的中文名称</param>
+        /// <returns></returns>
+        public double[] GetDPMValue(int arraySize, List<string> var, List<int> index,List<string> varsMean)
         {
+            //实例化帮助类
+            LogHelper log = new LogHelper();
+            log.SetVarsNameLogFunc(MainWindow.m_LogFileName,varsMean);
             double[] p = new double[arraySize];
             try
             {
@@ -146,6 +158,7 @@ namespace DPM_Utility
                 }
                 states_dec = true;
             }
+            Console.WriteLine(p.Length);
             return p;
         }
         public int[] GetLedValue(int arraySize, List<string> var, List<int> index)

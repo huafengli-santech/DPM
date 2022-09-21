@@ -45,12 +45,14 @@ namespace DPM_Utility.Views
         public static string m_ParaFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\parameters.ini";
         public static string m_BackupFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Backup.prg";
         public static string m_LogFileName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Log.log";
+        public static string m_LogFileStartName = AppDomain.CurrentDomain.BaseDirectory + "\\IniConfig&Backup\\Log.log";
         public static INI iniFile = new INI(m_IniFileName);
         public static INI paramFile = new INI(m_ParaFileName);
 
         public static List<string> T_DpmParaVar;
         public static List<string> T_DpmParaValue;
 
+        public static List<string> T_DpmMeanNames;
         //ACS初始化
         ACSMotionControl m_com = new ACSMotionControl();
 

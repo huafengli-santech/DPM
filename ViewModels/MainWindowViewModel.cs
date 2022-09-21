@@ -145,7 +145,7 @@ namespace DPM_Utility.ViewModels
                     MainContent = new MotionDetection();
                     break;
                 case 2:
-                    MainContent = new HistoryMonitor(MainWindow.S_selected_axis);
+                    MainContent = new HistoryMonitor();
                     break;
                 default:
                     break;

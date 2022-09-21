@@ -18,9 +18,6 @@ namespace DPM_Utility.ViewModels
 {
     public class HistoryMonitorViewModel : InotifyBase
     {
-        private string[] StandardMean = { "DPM状态", "变量值", "变量绝对值",
-                                                                "测量绝对值", "样本当前值", "样本峰值",
-                                                                "样本平均值", "样本标准偏差", "样本均方根值", };
         /// <summary>
         /// 数据List
         /// </summary>
@@ -30,27 +27,12 @@ namespace DPM_Utility.ViewModels
         /// </summary>
         List<string> dateTimeList = new List<string>();
 
-        private int[] _axis;
-
-        public int[] Axis
-        {
-            get { return _axis; }
-            set { _axis = value; DoNotify(); }
-        }
 
         private string[] _vars;
         public string[] Vars
         {
             get { return _vars; }
             set { _vars = value; DoNotify(); }
-        }
-
-        private int _axisIndex;
-
-        public int AxisIndex
-        {
-            get { return _axisIndex; }
-            set { _axisIndex = value; DoNotify(); }
         }
 
         private int _varsIndex;
@@ -76,13 +58,12 @@ namespace DPM_Utility.ViewModels
 
         public IcommandBase RefreshCommand { get; set; }
 
-        public HistoryMonitorViewModel(int[] axis)
+        public HistoryMonitorViewModel()
         {
 
-            Vars = StandardMean;
-            Axis = axis;
+            Vars = GetParaDate();
             GetLogDate();
-            if (axis != null& dateTimeList.Count!=0)
+            if (dateTimeList.Count != 0)
             {
                 temp = new double[dateTimeList.Count];
                 LineInit();
@@ -91,29 +72,42 @@ namespace DPM_Utility.ViewModels
             {
                 MainWindow.show.Show("轴数或历史记录为空，请开启检测后使用", "曲线显示提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
             }
-            //连接控制器指令
+            //刷新按钮指令实现
             RefreshCommand = new IcommandBase();
             RefreshCommand.DoExeccute = new Action<object>((o) =>
             {
-                if (axis != null & dateTimeList.Count != 0)
+                if (dateTimeList.Count != 0)
                 {
                     temp = new double[dateTimeList.Count];
                     LineInit();
                 }
                 else
                 {
-                    MainWindow.show.Show("轴数或历史记录为空，请开启检测后使用", "曲线显示提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
+                    MainWindow.show.Show("历史记录为空，开启检测监控一会后重试", "曲线显示提示", (Brush)new BrushConverter().ConvertFrom("#ffee58"), 10);
                 }
             });
             RefreshCommand.DoCanExeccute = new Func<object, bool>((o) => true);
+        }
+
+        /// <summary>
+        /// 将曲线名称中包含变量的字符串转换为用户自定义变量名称值
+        /// </summary>
+        /// <param name="meanName">曲线名称字符串</param>
+        /// <returns></returns>
+        private string GetTypeName(string meanName)
+        {
+            string typeName = "";
+            if (meanName != null && meanName.Contains("变量"))
+                typeName = meanName.Replace("变量", CreatBuffer.TestItem);
+            else
+                typeName = meanName;
+            return typeName;
         }
 
         public void LineInit()
         {
             //实例化一条折线图
             LineSeries line1 = new LineSeries();
-            //设置折线的标题
-            line1.Title = "历史曲线";
             //设置折线的形式
             line1.LineSmoothness = 1;
             //是否显示数值
@@ -144,8 +138,7 @@ namespace DPM_Utility.ViewModels
                 for (int i = 0; i < dateTimeList.Count; i++)
                 {
                     Thread.Sleep(100);
-                    int index = (AxisIndex * StandardMean.Length) + VarsIndex;
-                    _trend = double.Parse(dateList[i][index]);
+                    _trend = double.Parse(dateList[i][VarsIndex]);
                     //通过Dispatcher在工作线程中更新窗体的UI元素
                     Application.Current.Dispatcher.Invoke(() =>
                     {
@@ -169,14 +162,41 @@ namespace DPM_Utility.ViewModels
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    string[] ds = line.Split('-');
-                    dateTimeList.Add(ds[0]);
-                    string[] tDate = ds[1].Trim().Split('\t');
-                    dateList.Add(tDate);
+                    if (!line.Contains("参数列表"))
+                    {
+                        string[] ds = line.Split('-');
+                        dateTimeList.Add(ds[0]);
+                        string[] tDate = ds[1].Trim().Split('\t');
+                        dateList.Add(tDate);
+                    }
                 }
             }
         }
 
+        private string[] GetParaDate()
+        {
+            List<string[]> strings = new List<string[]>();
+            using (StreamReader reader = new StreamReader(MainWindow.m_LogFileName))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    if (line.Contains("参数列表"))
+                    {
+                        string[] ds = line.Split('-');
+                        string[] tDate = ds[1].Trim().Split('\t');
+                        for (int i = 0; i < tDate.Length; i++)
+                        {
+                            tDate[i] = GetTypeName(tDate[i]);
+                        }
+                        strings.Add(tDate);
+                    }
+                }
+            }
+            string[] meanNames = new string[strings[0].Length];
+            meanNames = strings[0];
+            return meanNames;
+        }
 
     }
 }

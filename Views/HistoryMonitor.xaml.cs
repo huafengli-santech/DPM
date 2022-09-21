@@ -21,10 +21,10 @@ namespace DPM_Utility.Views
     /// </summary>
     public partial class HistoryMonitor : UserControl
     {
-        public HistoryMonitor(int[] axis)
+        public HistoryMonitor()
         {
             InitializeComponent();
-            this.DataContext = new HistoryMonitorViewModel(axis);
+            this.DataContext = new HistoryMonitorViewModel();
         }
 
         private void Border_Loaded(object sender, RoutedEventArgs e)

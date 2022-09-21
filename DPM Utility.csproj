@@ -71,6 +71,7 @@
     <Compile Include="Comon\ACSMotionControl.cs" />
     <Compile Include="Comon\CreatBuffer.cs" />
     <Compile Include="Comon\INI.cs" />
+    <Compile Include="Comon\LogHelper.cs" />
     <Compile Include="Comon\NotifyData.cs" />
     <Compile Include="Comon\ShowMessage.cs" />
     <Compile Include="Controls\IconButton.cs" />
