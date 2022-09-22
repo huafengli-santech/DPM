@@ -2,7 +2,6 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-
 namespace DPM_Utility.UserControls
 {
     /// <summary>
@@ -14,13 +13,11 @@ namespace DPM_Utility.UserControls
         {
             InitializeComponent();
         }
-
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
             helpPng_Popup.IsOpen = false;
             helpPng_Popup.IsOpen = true;
         }
-
         private void saveToCreatBuffer_Click(object sender, RoutedEventArgs e)
         {
             //保存两个文本框内的数据

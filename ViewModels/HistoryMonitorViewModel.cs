@@ -13,7 +13,6 @@ using DPM_Utility.Views;
 using System.Windows.Media;
 using System.IO;
 using System.Security.Cryptography;
-
 namespace DPM_Utility.ViewModels
 {
     public class HistoryMonitorViewModel : InotifyBase
@@ -26,41 +25,30 @@ namespace DPM_Utility.ViewModels
         /// 数据时间list
         /// </summary>
         List<string> dateTimeList = new List<string>();
-
-
         private string[] _vars;
         public string[] Vars
         {
             get { return _vars; }
             set { _vars = value; DoNotify(); }
         }
-
         private int _varsIndex;
-
         public int VarsIndex
         {
             get { return _varsIndex; }
             set { _varsIndex = value; DoNotify(); }
         }
-
-
         private SeriesCollection _seriesCollection;
-
         public SeriesCollection SeriesCollection
         {
             get { return _seriesCollection; }
             set { _seriesCollection = value; DoNotify(); }
         }
-
         public ObservableCollection<string> Labels { get; set; }
         private double _trend;
         private double[] temp;
-
         public IcommandBase RefreshCommand { get; set; }
-
         public HistoryMonitorViewModel()
         {
-
             Vars = GetParaDate();
             GetLogDate();
             if (dateTimeList.Count != 0)
@@ -88,7 +76,6 @@ namespace DPM_Utility.ViewModels
             });
             RefreshCommand.DoCanExeccute = new Func<object, bool>((o) => true);
         }
-
         /// <summary>
         /// 将曲线名称中包含变量的字符串转换为用户自定义变量名称值
         /// </summary>
@@ -103,7 +90,6 @@ namespace DPM_Utility.ViewModels
                 typeName = meanName;
             return typeName;
         }
-
         public void LineInit()
         {
             //实例化一条折线图
@@ -114,7 +100,6 @@ namespace DPM_Utility.ViewModels
             line1.DataLabels = true;
             //折线图的无点样式
             line1.PointGeometry = null;
-
             //添加横坐标
             Labels = new ObservableCollection<string>();
             foreach (var item in temp)
@@ -126,7 +111,6 @@ namespace DPM_Utility.ViewModels
             SeriesCollection = new SeriesCollection();
             SeriesCollection.Add(line1);
             _trend = 8;
-
             GetLogDate();
             //再次之前需要读取保存的参数，判断两个combobox状态来输出
             lineStart();
@@ -152,7 +136,6 @@ namespace DPM_Utility.ViewModels
                 }
             });
         }
-
         private void GetLogDate()
         {
             dateTimeList.Clear();
@@ -172,7 +155,6 @@ namespace DPM_Utility.ViewModels
                 }
             }
         }
-
         private string[] GetParaDate()
         {
             List<string[]> strings = new List<string[]>();
@@ -197,6 +179,5 @@ namespace DPM_Utility.ViewModels
             meanNames = strings[0];
             return meanNames;
         }
-
     }
 }

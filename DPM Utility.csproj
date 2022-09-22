@@ -75,7 +75,9 @@
     <Compile Include="Comon\NotifyData.cs" />
     <Compile Include="Comon\ShowMessage.cs" />
     <Compile Include="Controls\IconButton.cs" />
+    <Compile Include="Date\CheckInfo.cs" />
     <Compile Include="Date\VarInfo.cs" />
+    <Compile Include="TypeConvert\BoolenToDouble.cs" />
     <Compile Include="UserControls\AddVarsHelpWindow.xaml.cs">
       <DependentUpon>AddVarsHelpWindow.xaml</DependentUpon>
     </Compile>

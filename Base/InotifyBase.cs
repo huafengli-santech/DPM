@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DPM_Utility.Base
 {
     public class InotifyBase : INotifyPropertyChanged
@@ -17,6 +16,5 @@ namespace DPM_Utility.Base
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

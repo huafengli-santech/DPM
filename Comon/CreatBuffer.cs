@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
-
 namespace DPM_Utility
 {
     public class CreatBuffer
     {
         //ACS初始化
         ACSMotionControl m_chanel = new ACSMotionControl();
-
         public static int AxisCount { get; set; }
         //默认属性
         public static string TestItem { get; set; }
@@ -140,7 +138,6 @@ namespace DPM_Utility
             }
             D_s.Append($"GLOBAL STATIC DPM_Motion_Status {ss}\n");
             ss = "";
-
             for (int i = 0; i < TestAxis.Length; i++)
             {
                 ss += $"{TestItem}_{TestAxis[i]}_Threshold,";
@@ -167,7 +164,6 @@ namespace DPM_Utility
             ss=ss.Remove(ss.LastIndexOf(','),1);
             O_s.Append($"GLOBAL INT {ss}\n");
             ss = "";
-
             for (int i = 0; i < TestAxis.Length; i++)
             {
                 ss += $"{TestItem}_{TestAxis[i]}_Threshold={TestThreshold[i]};";
@@ -177,7 +173,6 @@ namespace DPM_Utility
             //定义一些隐藏参数
             O_s.Append($"measure_continuously = 1\n");
             O_s.Append($"Sample_set_size = 20\n");
-
             //如果是峰值电流模式，需要将驱动器峰值电流+分辨率设置
             if (TestItem == "PeckCurrent")
             {
@@ -199,7 +194,6 @@ namespace DPM_Utility
             //开启检测
             O_s.Append($"\n!Start Measurement\n");
             ss = "";//用于中转
-
             //先将之前的全部停止掉
             for (int i = 0; i < TestAxis.Length; i++)
             {
@@ -207,7 +201,6 @@ namespace DPM_Utility
             }
             O_s.Append($"{ss}\n");
             ss = "";
-
             //motion结构体名称
             if (!TestType.Contains("3"))
             {
@@ -254,7 +247,6 @@ namespace DPM_Utility
         private void TestItemFunc(string v)
         {
             if (!string.IsNullOrEmpty(v)) TestItem = v.Trim(); else { TestItem = "0"; }
-
                 switch (TestItem)
                 {
                     case "0":
@@ -268,7 +260,6 @@ namespace DPM_Utility
                         break;
                 }
         }
-
         private void TestAxisFunc(string v)
         {
             
@@ -292,9 +283,7 @@ namespace DPM_Utility
                     MainWindow.S_selected_axis[i] = int.Parse(TestAxis[i]);
                 }
             }
-
         }
-
         private void TestTypeFunc(string v)
         {
             if (!string.IsNullOrEmpty(v)) { TestType = v.Trim().Split(' '); }
@@ -306,7 +295,6 @@ namespace DPM_Utility
                     TestType[i] = "0";
                 }
             }
-
             for (int i = 0; i < AxisCount; i++)
             {
                 switch (TestType[i])
@@ -326,7 +314,6 @@ namespace DPM_Utility
                 }
             }
         }
-
         private void TestThresholdFunc(string v)
         {
             if (!string.IsNullOrEmpty(v)) { TestThreshold = v.Trim().Split(' '); }
@@ -340,14 +327,12 @@ namespace DPM_Utility
             }
             MainWindow.S_Threshold =TestThreshold;
         }
-
         private void TestBufferFunc(string v)
         {
             if(!string.IsNullOrEmpty(v)) TestBuffer = v.Trim(); else { TestBuffer = "0"; }
             //测试程序保存位置
             MainWindow.S_selected_buffer = int.Parse(TestBuffer);
         }
-
         private void DriveCurrentFunc(string v)
         {
             if (TestItem == "0") { return; }//如果测试项不是峰值电流检测，则返回
@@ -362,7 +347,6 @@ namespace DPM_Utility
                 
             }
         }
-
         private void AnalogResFunc(string v)
         {
             if (TestItem == "0") { return; }//如果测试项不是峰值电流检测，则返回
@@ -377,7 +361,5 @@ namespace DPM_Utility
             }
         }
         #endregion
-
-
     }
 }

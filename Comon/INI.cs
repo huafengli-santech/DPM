@@ -4,14 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-
 namespace DPM_Utility
 {
     public class INI
     {
-
         public string path;
-
         public INI(string INIPath)
         {
             path = INIPath;
@@ -19,22 +16,17 @@ namespace DPM_Utility
         #region 其他
         [DllImport("kernel32",CharSet =CharSet.Unicode)]
         private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
-
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
-
-
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
         private static extern int GetPrivateProfileString(string section, string key, string defVal, Byte[] retVal, int size, string filePath);
         #endregion
         [DllImport("kernel32", EntryPoint = "GetPrivateProfileString")]
         private static extern uint GetPrivateProfileStringA(string section, string key,string def, Byte[] retVal, int size, string filePath);
-
         public  List<string> ReadSections()
         {
             return ReadSections(path);
         }
-
         public  List<string> ReadSections(string iniFilename)
         {
             List<string> result = new List<string>();
@@ -49,12 +41,10 @@ namespace DPM_Utility
                 }
             return result;
         }
-
         public  List<string> ReadKeys(String SectionName)
         {
             return ReadKeys(SectionName, path);
         }
-
         public  List<string> ReadKeys(string SectionName, string iniFilename)
         {
             List<string> result = new List<string>();
@@ -69,7 +59,6 @@ namespace DPM_Utility
                 }
             return result;
         }
-
         //写INI文件
         /// <summary>
         /// 写INI文件
@@ -117,6 +106,5 @@ namespace DPM_Utility
         {
             IniWriteValue(Section, null, null);
         }
-
     }
 }

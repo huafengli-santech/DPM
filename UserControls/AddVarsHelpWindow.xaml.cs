@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace DPM_Utility.UserControls
 {
     /// <summary>
@@ -25,7 +24,6 @@ namespace DPM_Utility.UserControls
             InitializeComponent();
             this.DataContext = new AddVarsViewModel();
         }
-
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton==MouseButtonState.Pressed)

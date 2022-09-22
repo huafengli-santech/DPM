@@ -1,6 +1,5 @@
 ﻿using DPM_Utility.ViewModels;
 using System.Windows.Controls;
-
 namespace DPM_Utility.Views
 {
     /// <summary>

@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DPM_Utility.Comon
 {
     public class LogHelper
@@ -36,8 +35,6 @@ namespace DPM_Utility.Comon
             catch 
             {
             }
-
         }
-
     }
 }

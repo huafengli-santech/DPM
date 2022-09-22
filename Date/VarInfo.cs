@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DPM_Utility.Date
 {
     public class VarInfo
@@ -16,6 +15,5 @@ namespace DPM_Utility.Date
         public object Threshold { get; set; }
         public object Maxcurrent { get; set; }
         public object AnalogResolution { get; set; }
-
     }
 }

@@ -1,33 +1,63 @@
 ﻿<UserControl x:Class="DPM_Utility.Views.DpmParameter"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:Controls="clr-namespace:DPM_Utility.Controls" xmlns:Popupview="clr-namespace:DPM_Utility.UserControls"
-      mc:Ignorable="d" 
-      d:DesignHeight="360" d:DesignWidth="616" Background="Transparent"
-      >
-    <Border CornerRadius="0 0 8 0"  Name="wholeBorder">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Controls="clr-namespace:DPM_Utility.Controls"
+             xmlns:Popupview="clr-namespace:DPM_Utility.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="360"
+             d:DesignWidth="616"
+             Background="Transparent">
+    <Border CornerRadius="0 0 8 0"
+            Name="wholeBorder">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="10"/>
+                <RowDefinition />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="10" />
             </Grid.RowDefinitions>
-            <ScrollViewer  Grid.Row="0"   VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Style="{StaticResource for_scrollviewer}">
-                <WrapPanel  x:Name="Pram_WarpPanel" Margin="0 5 0 5"  Width="{Binding ElementName=wholeBorder, Path=ActualWidth}" >
-
-                </WrapPanel>
+            <ScrollViewer  Grid.Row="0"
+                           VerticalScrollBarVisibility="Auto"
+                           HorizontalScrollBarVisibility="Auto"
+                           Style="{StaticResource for_scrollviewer}">
+                <WrapPanel  x:Name="Pram_WarpPanel"
+                            Margin="0 5 0 5"
+                            Width="{Binding ElementName=wholeBorder, Path=ActualWidth}"></WrapPanel>
             </ScrollViewer>
-            <UniformGrid Columns="3" Grid.Row="1">
-                <Controls:IconButton x:Name="update" Click="update_Click" IconOnlyData="刷新" Style="{StaticResource IconOnlyButtonStyle}"  Width="100" Margin="5 5"/>
-                <Controls:IconButton x:Name="setup" Click="setup_Click" IconOnlyData="重置" Style="{StaticResource IconOnlyButtonStyle}"  Width="100" Margin="5 5"/>
-                <Controls:IconButton x:Name="loadToIni" Click="loadToIni_Click" IconOnlyData="保存" Style="{StaticResource IconOnlyButtonStyle}"  Width="100" Margin="5 5"/>
-                <Popup x:Name="FileManeger_Popup" Width="400" Height="400" Margin="5 0" StaysOpen="False"  IsOpen="False"  AllowsTransparency="True" PopupAnimation="Scroll"  PlacementTarget="{Binding ElementName= loadToIni}" Placement="Top">
-                    <Popupview:Buffer/>
+            <UniformGrid Columns="3"
+                         Grid.Row="1">
+                <Controls:IconButton x:Name="update"
+                                     Click="update_Click"
+                                     IconOnlyData="刷新"
+                                     Style="{StaticResource IconOnlyButtonStyle}"
+                                     Width="100"
+                                     Margin="5 5" />
+                <Controls:IconButton x:Name="setup"
+                                     Click="setup_Click"
+                                     IconOnlyData="重置"
+                                     Style="{StaticResource IconOnlyButtonStyle}"
+                                     Width="100"
+                                     Margin="5 5" />
+                <Controls:IconButton x:Name="loadToIni"
+                                     Click="loadToIni_Click"
+                                     IconOnlyData="保存"
+                                     Style="{StaticResource IconOnlyButtonStyle}"
+                                     Width="100"
+                                     Margin="5 5" />
+                <Popup x:Name="FileManeger_Popup"
+                       Width="400"
+                       Height="400"
+                       Margin="5 0"
+                       StaysOpen="False"
+                       IsOpen="False"
+                       AllowsTransparency="True"
+                       PopupAnimation="Scroll"
+                       PlacementTarget="{Binding ElementName= loadToIni}"
+                       Placement="Top">
+                    <Popupview:Buffer />
                 </Popup>
             </UniformGrid>
         </Grid>
-
     </Border>
 </UserControl>

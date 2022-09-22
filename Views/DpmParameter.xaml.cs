@@ -5,7 +5,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 namespace DPM_Utility.Views
 {
     /// <summary>
@@ -18,12 +17,8 @@ namespace DPM_Utility.Views
         public DpmParameter()
         {
             InitializeComponent();
-
-
             WrapPanelInit();
         }
-
-
         private void ReadIniVar()
         {
             List<string> TempParaVar = new List<string>();
@@ -36,7 +31,6 @@ namespace DPM_Utility.Views
                 MainWindow.T_DpmParaValue.Add(MainWindow.paramFile.IniReadValue("para", TempParaVar[i]));
             }
         }
-
         private void WrapPanelInit()
         {
             if (File.Exists(MainWindow.m_ParaFileName)) { return; }
@@ -46,7 +40,6 @@ namespace DPM_Utility.Views
             textBlock.VerticalAlignment = VerticalAlignment.Center;
             textBlock.FontSize = 25;
             this.Pram_WarpPanel.Children.Add(textBlock);
-
             if (!File.Exists(MainWindow.m_ParaFileName))
             {
                 MainWindow.paramFile.IniWriteValue("参数举例（具体参数请在  Para  组中添加添加）", "  ***参数中间用空格分隔***   ", "变量不能增加，其他变量请在状态检测界面添加");
@@ -57,7 +50,6 @@ namespace DPM_Utility.Views
                 MainWindow.paramFile.IniWriteValue("Parameter", "Buffer号", "0(存放代码的buffer号，最大到控制器buffer限制)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "峰值电流", "40 20(可选参数，选择峰值电流检测时使用，轴所在从站电流最大值，需要与轴个数一一对应，不填写默认0)");
                 MainWindow.paramFile.IniWriteValue("Parameter", "模拟量输入分辨率", "12 16(可选参数，选择峰值电流检测时使用，需要与轴个数一一对应（bit位），不填写默认0)");
-
                 MainWindow.paramFile.IniWriteValue("Para", "检测项目", "");
                 MainWindow.paramFile.IniWriteValue("Para", "采样轴号", "");
                 MainWindow.paramFile.IniWriteValue("Para", "检测阶段", "");
@@ -66,10 +58,8 @@ namespace DPM_Utility.Views
                 MainWindow.paramFile.IniWriteValue("Para", "峰值电流", "");
                 MainWindow.paramFile.IniWriteValue("Para", "模拟量输入分辨率", "");
             }
-
             Pram_WarpPanel.MouseUp += Pram_WarpPanel_MouseUp;
         }
-
         //打开文件
         private void Pram_WarpPanel_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -78,7 +68,6 @@ namespace DPM_Utility.Views
             ReadIniVar();
             DynamicAddPram(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
         }
-
         /// <summary>
         /// 动态加载参数
         /// </summary>
@@ -113,14 +102,10 @@ namespace DPM_Utility.Views
                 stackPanel.Children.Add(textBox);
                 Pram_WarpPanel.Children.Add(stackPanel);
             }
-
         }
-
         private void C_MouseLeave(object sender, MouseEventArgs e)
         {
-
         }
-
         private void C_MouseEnter(object sender, MouseEventArgs e)
         {
             Control uI = sender as Control;
@@ -132,9 +117,7 @@ namespace DPM_Utility.Views
             {
                 //toolTipsLabel.Text = m_tooltipsStr2[uI.TabIndex];
             }
-
         }
-
         private void loadToIni_Click(object sender, RoutedEventArgs e)
         {
             if (MainWindow.T_DpmParaValue[0] == "2")
@@ -150,14 +133,11 @@ namespace DPM_Utility.Views
                 int.TryParse(CreatBuffer.TestBuffer, out int buffernum);
                 //将数据添加进D-BUFFER中
                 MainWindow.S_DpmD_String = builders[0].ToString();
-
                 //将数据添加进指定Buffer中
                 MainWindow.S_DpmO_String = builders[1].ToString();
                 m_com.UploadBuffer();
             }
-
         }
-
         private void update_Click(object sender, RoutedEventArgs e)
         {
             Pram_WarpPanel.Children.Clear();
@@ -166,7 +146,6 @@ namespace DPM_Utility.Views
             ReadIniVar();
             DynamicAddPram(MainWindow.T_DpmParaVar, MainWindow.T_DpmParaValue);
         }
-
         private void setup_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(MainWindow.m_ParaFileName);

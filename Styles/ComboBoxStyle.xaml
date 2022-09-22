@@ -73,7 +73,6 @@
                                     </ToggleButton.Style>
                                 </ToggleButton>
                             </Grid>
-
                             <Grid Grid.Column="1" >
                                 <ToggleButton IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Foreground="{TemplateBinding Foreground}"
@@ -100,7 +99,6 @@
                                                         </Border>
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsChecked" Value="True">
-
                                                             </Trigger>
                                                             <EventTrigger RoutedEvent="Checked">
                                                                 <BeginStoryboard>
@@ -112,7 +110,6 @@
                                                                     </Storyboard>
                                                                 </BeginStoryboard>
                                                             </EventTrigger>
-
                                                             <EventTrigger RoutedEvent="Unchecked">
                                                                 <BeginStoryboard>
                                                                     <Storyboard >
@@ -143,8 +140,6 @@
                                 </Border>
                             </Popup>
                         </Grid>
-
-
                         <Border.Effect>
                             <DropShadowEffect ShadowDepth="-1" Opacity="0.3" Color="#FF969696" BlurRadius="5"/>
                         </Border.Effect>
@@ -152,7 +147,5 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
-
     </Style>
 </ResourceDictionary>

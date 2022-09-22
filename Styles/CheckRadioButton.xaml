@@ -35,7 +35,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type RadioButton}">
-
                     <Border CornerRadius="5" Background="Transparent" Margin="5 0 0 0 ">
                         <Grid  x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                             <Grid.ColumnDefinitions>

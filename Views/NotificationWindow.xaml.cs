@@ -4,7 +4,6 @@ using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
-
 namespace DPM_Utility
 {
     /// <summary>
@@ -21,7 +20,6 @@ namespace DPM_Utility
             InitializeComponent();
             this.Loaded += NotificationWindow_Loaded;
         }
-
         private void NotificationWindow_Loaded(object sender, RoutedEventArgs e)
         {
             int seconds = 5;//通知持续5s后消失
@@ -38,7 +36,6 @@ namespace DPM_Utility
             {
                 self.UpdateLayout();
                 SystemSounds.Asterisk.Play();//播放提示声
-
                 double right = System.Windows.SystemParameters.WorkArea.Right;//工作区最右边的值
                 self.Top = self.TopFrom - self.ActualHeight;
                 DoubleAnimation animation = new DoubleAnimation();
@@ -46,7 +43,6 @@ namespace DPM_Utility
                 animation.From = right;
                 animation.To = right - self.ActualWidth;//设定通知从右往左弹出
                 self.BeginAnimation(Window.LeftProperty, animation);//设定动画应用于窗体的Left属性
-
                 Task.Factory.StartNew(delegate
                 {
                     System.Threading.Thread.Sleep(TimeSpan.FromSeconds(seconds));
@@ -63,13 +59,11 @@ namespace DPM_Utility
                 });
             }
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double right = System.Windows.SystemParameters.WorkArea.Right;
             DoubleAnimation animation = new DoubleAnimation();
             animation.Duration = new Duration(TimeSpan.FromMilliseconds(500));
-
             animation.Completed += (s, a) => { this.Close(); };
             animation.From = right - this.ActualWidth;
             animation.To = right;

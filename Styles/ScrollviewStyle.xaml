@@ -43,7 +43,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <!--滚动条上下按钮-->
     <Style x:Key="VerticalScrollBarPageButton2" TargetType="{x:Type RepeatButton}">
         <Setter Property="OverridesDefaultStyle"  Value="true"/>
@@ -233,10 +232,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <!--默认ScrollBar-->
     <Style TargetType="ScrollBar" BasedOn="{StaticResource for_scrollbar}"/>
-
     <!--默认ScrollView-->
     <Style TargetType="ScrollViewer" BasedOn="{StaticResource for_scrollviewer}"/>
 </ResourceDictionary>

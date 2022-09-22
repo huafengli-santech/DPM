@@ -5,21 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DPM_Utility"
         xmlns:Controls="clr-namespace:DPM_Utility.Controls"
-        WindowStyle="None" AllowsTransparency="True"
+        WindowStyle="None"
+        AllowsTransparency="True"
         Background="Transparent"
         mc:Ignorable="d"
-        Title="NotificationWindow" Height="100" Width="300" Topmost="True" >
-    <Border CornerRadius="8" Background="#a1ffce" Name="border">
-        <Grid >
+        Title="NotificationWindow"
+        Height="100"
+        Width="300"
+        Topmost="True">
+    <Border CornerRadius="8"
+            Background="#a1ffce"
+            Name="border">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <Controls:IconButton  Click="Button_Click" IconOnlyData="×" HorizontalAlignment="Right"  VerticalAlignment="Top" Style="{StaticResource IconOnlyButtonStyle}" FontSize="25" Height="25" Margin="5"/>
-            <TextBlock x:Name="tbTitle" HorizontalAlignment="Left" Margin="5" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="1"/>
-            <TextBlock x:Name="tbContent" HorizontalAlignment="Left"  Margin="5" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Grid.Row="2"/>
+            <Controls:IconButton  Click="Button_Click"
+                                  IconOnlyData="×"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Top"
+                                  Style="{StaticResource IconOnlyButtonStyle}"
+                                  FontSize="25"
+                                  Height="25"
+                                  Margin="5" />
+            <TextBlock x:Name="tbTitle"
+                       HorizontalAlignment="Left"
+                       Margin="5"
+                       TextWrapping="Wrap"
+                       Text="TextBlock"
+                       VerticalAlignment="Top"
+                       Grid.Row="1" />
+            <TextBlock x:Name="tbContent"
+                       HorizontalAlignment="Left"
+                       Margin="5"
+                       TextWrapping="Wrap"
+                       Text="TextBlock"
+                       VerticalAlignment="Top"
+                       Grid.Row="2" />
         </Grid>
     </Border>
-
 </Window>

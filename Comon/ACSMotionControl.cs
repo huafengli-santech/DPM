@@ -11,7 +11,6 @@ using System.Windows.Media;
 using ACS.SPiiPlusNET;
 using DPM_Utility.Comon;
 using DPM_Utility.Views;
-
 namespace DPM_Utility
 {
     internal class ACSMotionControl
@@ -21,16 +20,12 @@ namespace DPM_Utility
         public static int m_TotalBuffers;
         //获取软件启动时的时间
         private static DateTime m_StartTime = DateTime.Now;
-
         private bool ACS_Connected = false;
-
         private bool states_dec;
         private bool led_dec;
         public ACSMotionControl()
         {
-
         }
-
         public string[] GetGetEthernetCardsIP()
         {
             // 获取所有IP
@@ -42,7 +37,6 @@ namespace DPM_Utility
             }
             return address;
         }
-
         public void Connect(string ip, int port)
         {
             if (!m_com.IsConnected)
@@ -65,14 +59,11 @@ namespace DPM_Utility
         }
         public int GetTotalAxes()
         {
-
             m_TotalAxes = (int)m_com.GetAxesCount();
             return m_TotalAxes;
         }
-
         public int GetTotalBuffers()
         {
-
             m_TotalBuffers = (int)m_com.GetBuffersCount();
             return m_TotalBuffers;
         }
@@ -81,7 +72,6 @@ namespace DPM_Utility
             m_com.CloseComm();
             ACS_Connected = false;
         }
-
         //保存DPM数据至一个文件中
         private void SaveLog(double[] code)
         {
@@ -117,7 +107,6 @@ namespace DPM_Utility
             }
             return flags;
         }
-
         /// <summary>
         /// 函数：获取曲线当前值
         /// </summary>
@@ -182,11 +171,8 @@ namespace DPM_Utility
                 }
                 led_dec = true;
             }
-
-
             return p;
         }
-
         public string GetBufferString(int buffernum)
         {
             string reply = "";
@@ -197,12 +183,10 @@ namespace DPM_Utility
             }
             return reply;
         }
-
         public void LoadFormFile(string filename)
         {
             m_com.LoadBuffersFromFile(filename);
         }
-
         public void CompileBuffer(int buffernum)
         {
             try
@@ -211,17 +195,14 @@ namespace DPM_Utility
             }
             catch
             {
-
             }
         }
-
         public int GetBufferLines(int buffernum)
         {
             int lines = 0;
             lines = (int)m_com.ReadVariable("PLINES", ProgramBuffer.ACSC_NONE, buffernum, buffernum);
             return lines;
         }
-
         public void ClearBuffer(int buffernum)
         {
             m_com.ClearBuffer((ProgramBuffer)buffernum, 1, GetBufferLines(buffernum));
@@ -230,12 +211,9 @@ namespace DPM_Utility
         {
             m_com.AppendBuffer((ProgramBuffer)buffernum, code);
         }
-
-
         public void UploadBuffer()
         {
             //需要将程序上载，并保存在TXT中防止软件崩溃
-
             for (int i = 0; i < GetTotalBuffers(); i++)
             {
                 if (!string.IsNullOrEmpty(GetBufferString(i)))
@@ -253,7 +231,6 @@ namespace DPM_Utility
             }
             SaveBufferToFile();
         }
-
         private void SaveBufferToFile()
         {
             StreamWriter writer = new StreamWriter(MainWindow.m_BackupFileName);
@@ -268,17 +245,14 @@ namespace DPM_Utility
             //导入数据
             IfAdd(MainWindow.S_selected_buffer, MainWindow.S_DpmO_String);
         }
-
         private void IfAdd(int buffernum, string s)
         {
-
             //倒回buffer
             WriteBuffer();
             //再清除响应的BUFFER
             if (GetBufferLines(buffernum) != 0)
             {
                 DialogResult result = (DialogResult)System.Windows.MessageBox.Show($"所选择的Buffer存在{GetBufferLines(buffernum)}行程序，是否清除后导入？", "提示", MessageBoxButton.OKCancel);
-
                 if (result == DialogResult.OK)
                 {
                     //delete
@@ -294,7 +268,6 @@ namespace DPM_Utility
             }
             System.Windows.MessageBox.Show("写入成功", "程序导入");
         }
-
         private void WriteBuffer()
         {
             LoadFormFile(MainWindow.m_BackupFileName);

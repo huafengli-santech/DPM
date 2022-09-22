@@ -1,40 +1,46 @@
 ﻿<UserControl x:Class="DPM_Utility.Views.HistoryMonitor"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DPM_Utility.Views"
              xmlns:Controls="clr-namespace:DPM_Utility.Controls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-            d:DesignHeight="360" d:DesignWidth="616" Background="Transparent">
-    <Border CornerRadius="0 0 8 0" Loaded="Border_Loaded" Name="wholeBorder">
+             d:DesignHeight="360"
+             d:DesignWidth="616"
+             Background="Transparent">
+    <Border CornerRadius="0 0 8 0">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Border >
+            <Border>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="监控变量:" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5 0"/>
-                    <ComboBox      Grid.Column="1"  Style="{StaticResource cmbstyle}" SelectedIndex="{Binding VarsIndex}" ItemsSource="{Binding Vars}" MinWidth="100"/>
+                    <TextBlock Text="监控变量:"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="5 0" />
+                    <ComboBox      Grid.Column="1"
+                                   Style="{StaticResource cmbstyle}"
+                                   SelectedIndex="{Binding VarsIndex}"
+                                   ItemsSource="{Binding Vars}"
+                                   MinWidth="100" />
                     <Controls:IconButton Margin="5 0"
                                          Style="{StaticResource IconOnlyButtonStyle}"
                                          Width="100"
                                          IconOnlyData="&#xe616; 刷新"
-                                         Command="{Binding RefreshCommand}"/>
+                                         Command="{Binding RefreshCommand}" />
                 </StackPanel>
             </Border>
-            <lvc:CartesianChart Grid.Row="1" 
-                                Margin="5" 
+            <lvc:CartesianChart Grid.Row="1"
+                                Margin="5"
                                 Zoom="X"
                                 Series="{Binding SeriesCollection}"
                                 LegendLocation="None">
-                <!--<lvc:CartesianChart.AxisY >
-                    <lvc:Axis></lvc:Axis>
-                </lvc:CartesianChart.AxisY>-->
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Labels="{Binding Labels}" ></lvc:Axis>
+                    <lvc:Axis Labels="{Binding Labels}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </Grid>

@@ -5,7 +5,6 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
 namespace DPM_Utility
 {
     /// <summary>
@@ -13,6 +12,5 @@ namespace DPM_Utility
     /// </summary>
     public partial class App : Application
     {
-
     }
 }

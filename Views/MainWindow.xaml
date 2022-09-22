@@ -5,88 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DPM_Utility"
         xmlns:Controls="clr-namespace:DPM_Utility.Controls"
-        mc:Ignorable="d" x:Name="wholeWindow"
-        Title="DPM Monitor" Height="450" Width="800" Topmost="False" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="Transparent" ShowInTaskbar="True">
-
-    <Border Background="#ffffff" CornerRadius="10" MouseLeftButtonDown="Border_MouseLeftButtonDown" Margin="2">
+        mc:Ignorable="d"
+        x:Name="wholeWindow"
+        Title="DPM Monitor"
+        Height="450"
+        Width="800"
+        Topmost="False"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="True">
+    <Border Background="#ffffff"
+            CornerRadius="10"
+            MouseLeftButtonDown="Border_MouseLeftButtonDown"
+            Margin="2">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="5" ShadowDepth="0" Direction="0" Color="Gray" Opacity="0.5"/>
+            <DropShadowEffect BlurRadius="5"
+                              ShadowDepth="0"
+                              Direction="0"
+                              Color="Gray"
+                              Opacity="0.5" />
         </Border.Effect>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <Border Background="#e5e6e8" CornerRadius="10 0 0 10">
+            <Border Background="#e5e6e8"
+                    CornerRadius="10 0 0 10">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.5*"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="0.5*" />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <!--DPM标志、公司LOGO-->
                     <Border>
                         <StackPanel>
                             <Grid>
-                                <Image Margin="0 20" 
-                                       Source="/Img/LOGO.png" 
-                                       VerticalAlignment="Center" 
-                                       HorizontalAlignment="Center"  
-                                       Width="50" 
-                                       Height="50"/>
+                                <Image Margin="0 20"
+                                       Source="/Img/LOGO.png"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Width="50"
+                                       Height="50" />
                             </Grid>
-                            <TextBlock Text="DPM Utility" 
-                                       VerticalAlignment="Top" 
-                                       HorizontalAlignment="Center" 
-                                       FontSize="16" 
-                                       Foreground="#0073bd"/>
+                            <TextBlock Text="DPM Utility"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       Foreground="#0073bd" />
                         </StackPanel>
                     </Border>
                     <!--左侧按钮-->
                     <!--<StackPanel Orientation="Vertical" Grid.Row="1" x:Name="leftButtonListPanel"/>-->
-                    <ListBox ItemsSource="{Binding ListButtonSource}" 
+                    <ListBox ItemsSource="{Binding ListButtonSource}"
                              SelectedIndex="{Binding SelectedIndex}"
-                             Grid.Row="1" 
-                             Style="{StaticResource ListboxStyle}">
-                    </ListBox>
+                             Grid.Row="1"
+                             Style="{StaticResource ListboxStyle}"></ListBox>
                 </Grid>
             </Border>
             <!--关闭、最大、最小化-->
-            <Border Grid.Column="1" x:Name="SetBorder" >
+            <Border Grid.Column="1"
+                    x:Name="SetBorder">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="5 0">
-                        <Controls:IconButton ToolTip="最小化" 
-                                             Command="{Binding MinFormCommand}" 
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="5 0">
+                        <Controls:IconButton ToolTip="最小化"
+                                             Command="{Binding MinFormCommand}"
                                              CommandParameter="{Binding ElementName=wholeWindow}"
-                                             Width="25" 
-                                             Height="25" 
-                                             Margin="5 0" 
-                                             IconOnlyData="&#xe6e8;" 
-                                             Style="{StaticResource IconOnlyButtonStyle}"/>
-                        <Controls:IconButton ToolTip="最大化" 
-                                             Command="{Binding MaxFormCommand}" 
+                                             Width="25"
+                                             Height="25"
+                                             Margin="5 0"
+                                             IconOnlyData="&#xe6e8;"
+                                             Style="{StaticResource IconOnlyButtonStyle}" />
+                        <Controls:IconButton ToolTip="最大化"
+                                             Command="{Binding MaxFormCommand}"
                                              CommandParameter="{Binding ElementName=wholeWindow}"
-                                             Width="25" 
-                                             Height="25" 
-                                             Margin="5 0" 
-                                             IconOnlyData="&#xe621;" 
-                                             Style="{StaticResource IconOnlyButtonStyle}"/>
-                        <Controls:IconButton ToolTip="关闭" 
-                                             Command="{Binding CloseFormCommand}" 
+                                             Width="25"
+                                             Height="25"
+                                             Margin="5 0"
+                                             IconOnlyData="&#xe621;"
+                                             Style="{StaticResource IconOnlyButtonStyle}" />
+                        <Controls:IconButton ToolTip="关闭"
+                                             Command="{Binding CloseFormCommand}"
                                              CommandParameter="{Binding ElementName=wholeWindow}"
-                                             Width="25" 
-                                             Height="25" 
-                                             Margin="5 0" 
-                                             IconOnlyData="&#xe644;" 
-                                             Style="{StaticResource IconOnlyButtonStyle}"/>
+                                             Width="25"
+                                             Height="25"
+                                             Margin="5 0"
+                                             IconOnlyData="&#xe644;"
+                                             Style="{StaticResource IconOnlyButtonStyle}" />
                     </StackPanel>
-                    <Frame Name="frmMain" 
-                                            NavigationUIVisibility="Hidden" 
-                                            Grid.Row="2" 
-                                            Content="{Binding MainContent}"/>
+                    <Frame Name="frmMain"
+                           NavigationUIVisibility="Hidden"
+                           Grid.Row="2"
+                           Content="{Binding MainContent}" />
                 </Grid>
             </Border>
         </Grid>
