@@ -9,6 +9,11 @@ namespace DPM_Utility.Base
     public class IcommandBase : ICommand
     {
         public event EventHandler CanExecuteChanged;
+        public IcommandBase(Action<object> doExeccute=null, Func<object, bool> doCanExeccute=null)
+        {
+            DoExeccute = doExeccute;
+            DoCanExeccute = doCanExeccute;
+        }
         public bool CanExecute(object parameter)
         {
             return DoCanExeccute?.Invoke(parameter) == true;

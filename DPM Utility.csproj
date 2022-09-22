@@ -76,6 +76,7 @@
     <Compile Include="Comon\ShowMessage.cs" />
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Date\CheckInfo.cs" />
+    <Compile Include="Date\DpmParaInfo.cs" />
     <Compile Include="Date\VarInfo.cs" />
     <Compile Include="TypeConvert\BoolenToDouble.cs" />
     <Compile Include="UserControls\AddVarsHelpWindow.xaml.cs">
@@ -84,6 +85,7 @@
     <Compile Include="UserControls\Buffer.xaml.cs" />
     <Compile Include="UserControls\HelpPng.xaml.cs" />
     <Compile Include="ViewModels\AddVarsViewModel.cs" />
+    <Compile Include="ViewModels\DpmParameterVM.cs" />
     <Compile Include="ViewModels\HistoryMonitorViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SoftWareViewModel.cs" />

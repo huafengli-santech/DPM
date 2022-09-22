@@ -9,6 +9,9 @@
              d:DesignHeight="360"
              d:DesignWidth="616"
              Background="Transparent">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="btv" />
+    </UserControl.Resources>
     <Border CornerRadius="0 0 8 0"
             Name="wholeBorder">
         <Grid>
@@ -21,36 +24,67 @@
                            VerticalScrollBarVisibility="Auto"
                            HorizontalScrollBarVisibility="Auto"
                            Style="{StaticResource for_scrollviewer}">
-                <WrapPanel  x:Name="Pram_WarpPanel"
+                <StackPanel>
+                    <Controls:IconButton Margin="5 25 5 0"
+                                         Visibility="{Binding IsShow,Converter={StaticResource btv}}"
+                                         Height="20"
+                                         Style="{StaticResource IconOnlyButtonStyle}"
+                                         IconOnlyData="{Binding Notice}"
+                                         Command="{Binding OpenIniCommand}" />
+                    <ItemsControl ItemsSource="{Binding ParaInfoList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="5"
+                                            VerticalAlignment="Top">
+                                    <TextBlock Margin="5 25 5 0"
+                                               Text="{Binding ParaName}" />
+                                    <TextBox BorderThickness="0 0 0 1"
+                                             VerticalAlignment="Bottom"
+                                             Width="500"
+                                             Height="25"
+                                             Margin="0 5 0 0"
+                                             TabIndex="{Binding index}"
+                                             Text="{Binding ParaValues}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="0 5" Orientation="Vertical" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+                <!--<WrapPanel  x:Name="Pram_WarpPanel"
                             Margin="0 5 0 5"
-                            Width="{Binding ElementName=wholeBorder, Path=ActualWidth}"></WrapPanel>
+                            Width="{Binding ElementName=wholeBorder, Path=ActualWidth}"></WrapPanel>-->
             </ScrollViewer>
             <UniformGrid Columns="3"
                          Grid.Row="1">
-                <Controls:IconButton x:Name="update"
-                                     Click="update_Click"
+                <Controls:IconButton 
                                      IconOnlyData="刷新"
                                      Style="{StaticResource IconOnlyButtonStyle}"
+                                     Command="{Binding UpdateCommand}"
                                      Width="100"
                                      Margin="5 5" />
-                <Controls:IconButton x:Name="setup"
-                                     Click="setup_Click"
+                <Controls:IconButton 
                                      IconOnlyData="重置"
                                      Style="{StaticResource IconOnlyButtonStyle}"
+                                     Command="{Binding ResetCommand}"
                                      Width="100"
                                      Margin="5 5" />
                 <Controls:IconButton x:Name="loadToIni"
-                                     Click="loadToIni_Click"
                                      IconOnlyData="保存"
                                      Style="{StaticResource IconOnlyButtonStyle}"
+                                     Command="{Binding SaveCommand}"
                                      Width="100"
                                      Margin="5 5" />
-                <Popup x:Name="FileManeger_Popup"
-                       Width="400"
+                <Popup Width="400"
                        Height="400"
                        Margin="5 0"
                        StaysOpen="False"
-                       IsOpen="False"
+                       IsOpen="{Binding IsOpen}"
                        AllowsTransparency="True"
                        PopupAnimation="Scroll"
                        PlacementTarget="{Binding ElementName= loadToIni}"
