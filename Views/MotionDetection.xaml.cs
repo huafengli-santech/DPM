@@ -51,7 +51,7 @@ namespace DPM_Utility.Views
         private int TotalAxis = 0;
         #endregion
         ACSMotionControl m_com = new ACSMotionControl();
-        SoftWareViewModel viewModel = new SoftWareViewModel();
+        MotionDetectionVM viewModel = new MotionDetectionVM();
         public MotionDetection()
         {
             InitializeComponent();

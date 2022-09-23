@@ -77,6 +77,7 @@
     <Compile Include="Controls\IconButton.cs" />
     <Compile Include="Date\CheckInfo.cs" />
     <Compile Include="Date\DpmParaInfo.cs" />
+    <Compile Include="Date\LinersInfo.cs" />
     <Compile Include="Date\VarInfo.cs" />
     <Compile Include="TypeConvert\BoolenToDouble.cs" />
     <Compile Include="UserControls\AddVarsHelpWindow.xaml.cs">
@@ -84,11 +85,11 @@
     </Compile>
     <Compile Include="UserControls\Buffer.xaml.cs" />
     <Compile Include="UserControls\HelpPng.xaml.cs" />
-    <Compile Include="ViewModels\AddVarsViewModel.cs" />
+    <Compile Include="ViewModels\AddVarsVM.cs" />
     <Compile Include="ViewModels\DpmParameterVM.cs" />
-    <Compile Include="ViewModels\HistoryMonitorViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\SoftWareViewModel.cs" />
+    <Compile Include="ViewModels\HistoryMonitorVM.cs" />
+    <Compile Include="ViewModels\MainWindowVM.cs" />
+    <Compile Include="ViewModels\MotionDetectionVM.cs" />
     <Compile Include="Views\DpmParameter.xaml.cs" />
     <Compile Include="Views\HistoryMonitor.xaml.cs">
       <DependentUpon>HistoryMonitor.xaml</DependentUpon>
@@ -99,9 +100,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Views\SoftWareSetup.xaml.cs">
-      <DependentUpon>SoftWareSetup.xaml</DependentUpon>
     </Compile>
     <Page Include="Styles\CheckRadioButton.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -166,10 +164,6 @@
     <Page Include="Views\NotificationWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\SoftWareSetup.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 namespace DPM_Utility.ViewModels
 {
-    public class MainWindowViewModel:InotifyBase
+    public class MainWindowVM:InotifyBase
     {
         public ObservableCollection<string> ListButtonSource { get; set; } = new ObservableCollection<string>();
         private string[] ListButtonName = { "参数配置", "状态检测","历史曲线" };
@@ -36,7 +36,7 @@ namespace DPM_Utility.ViewModels
             get { return _isconnected; }
             set { _isconnected = value;DoNotify(); }
         }
-        public MainWindowViewModel()
+        public MainWindowVM()
         {
             //UI线程未捕获异常处理事件
             Application.Current.DispatcherUnhandledException += OnDispatcherUnhandledException;

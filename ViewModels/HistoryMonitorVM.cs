@@ -15,7 +15,7 @@ using System.IO;
 using System.Security.Cryptography;
 namespace DPM_Utility.ViewModels
 {
-    public class HistoryMonitorViewModel : InotifyBase
+    public class HistoryMonitorVM : InotifyBase
     {
         /// <summary>
         /// 数据List
@@ -47,7 +47,7 @@ namespace DPM_Utility.ViewModels
         private double _trend;
         private double[] temp;
         public IcommandBase RefreshCommand { get; set; }
-        public HistoryMonitorViewModel()
+        public HistoryMonitorVM()
         {
             Vars = GetParaDate();
             GetLogDate();

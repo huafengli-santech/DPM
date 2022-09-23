@@ -22,7 +22,7 @@ namespace DPM_Utility.UserControls
         public AddVarsHelpWindow()
         {
             InitializeComponent();
-            this.DataContext = new AddVarsViewModel();
+            this.DataContext = new AddVarsVM();
         }
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {

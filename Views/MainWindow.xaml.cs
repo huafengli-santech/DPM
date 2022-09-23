@@ -47,7 +47,7 @@ namespace DPM_Utility.Views
         public static List<string> T_DpmMeanNames;
         //ACS初始化
         ACSMotionControl m_com = new ACSMotionControl();
-        MainWindowViewModel model = new MainWindowViewModel();
+        MainWindowVM model = new MainWindowVM();
         public MainWindow()
         {
             InitializeComponent();

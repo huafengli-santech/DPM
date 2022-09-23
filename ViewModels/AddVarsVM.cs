@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Windows;
 namespace DPM_Utility.ViewModels
 {
-    public class AddVarsViewModel : InotifyBase
+    public class AddVarsVM : InotifyBase
     {
         public IcommandBase CloseCommand { get; set; }
-        public AddVarsViewModel()
+        public AddVarsVM()
         {
             CloseCommand = new IcommandBase();
             CloseCommand.DoExeccute = new Action<object>((o) =>

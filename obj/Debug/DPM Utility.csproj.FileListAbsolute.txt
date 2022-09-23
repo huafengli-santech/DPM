@@ -115,7 +115,6 @@ D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.g.cs
 D:\GitCode\DPM\obj\Debug\Views\MainWindow.g.cs
 D:\GitCode\DPM\obj\Debug\Views\MotionDetection.g.cs
 D:\GitCode\DPM\obj\Debug\Views\NotificationWindow.g.cs
-D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.g.cs
 D:\GitCode\DPM\obj\Debug\App.g.cs
 D:\GitCode\DPM\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\GitCode\DPM\obj\Debug\DPM Utility_MarkupCompile.cache
@@ -130,7 +129,6 @@ D:\GitCode\DPM\obj\Debug\Views\HistoryMonitor.baml
 D:\GitCode\DPM\obj\Debug\Views\MainWindow.baml
 D:\GitCode\DPM\obj\Debug\Views\MotionDetection.baml
 D:\GitCode\DPM\obj\Debug\Views\NotificationWindow.baml
-D:\GitCode\DPM\obj\Debug\Views\SoftWareSetup.baml
 D:\GitCode\DPM\obj\Debug\DPM Utility.g.resources
 D:\GitCode\DPM\obj\Debug\DPM_Utility.Properties.Resources.resources
 D:\GitCode\DPM\obj\Debug\DPM Utility.csproj.GenerateResource.cache

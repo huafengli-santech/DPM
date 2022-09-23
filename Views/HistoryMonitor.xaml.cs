@@ -11,7 +11,7 @@ namespace DPM_Utility.Views
         public HistoryMonitor()
         {
             InitializeComponent();
-            this.DataContext = new HistoryMonitorViewModel();
+            this.DataContext = new HistoryMonitorVM();
         }
     }
 }
